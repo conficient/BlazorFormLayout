@@ -1,0 +1,14 @@
+﻿<BsGroup Label="@Label">
+    <InputText @bind-Value="@Value" @bind-Value:event="changed" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
+</BsGroup>
+@code
+{
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public string Value { get; set; }
+
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    [CascadingParameter] public EditMode Mode { get; set; }
+
+}

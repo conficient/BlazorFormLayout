@@ -21,7 +21,7 @@ This code creates a Bootstrap form with several bound fields.
       <input type='color' @bind="model.FavouriteColour" />
     </BsGroup>
     <BsDropdown @bind-Value="model.CustomerType" @options="CustomerTypeList" Label="Business Type" />
-    <BsStatic Value="model.TotalPrice" />
+    <BsStaticText Value="model.TotalPrice" />
   </BsLayout>
 </EditForm>
 ```

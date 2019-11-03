@@ -1,0 +1,21 @@
+﻿<BsGroup Label="@Label">
+    <InputSelect @bind-Value="@Value" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" >
+        @foreach (var item in ValueOptions)
+        {
+            <option>@item</option>
+        }
+    </InputSelect>
+</BsGroup>
+@code
+{
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public IEnumerable<string> ValueOptions { get; set; }
+
+    [Parameter] public string Value { get; set; }
+
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    [CascadingParameter] public EditMode Mode { get; set; }
+
+}

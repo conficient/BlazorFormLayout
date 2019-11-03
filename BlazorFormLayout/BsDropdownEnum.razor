@@ -1,0 +1,32 @@
+﻿@typeparam TEnum 
+<BsGroup Label="@Label">
+    <InputSelect @bind-Value="@Value" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" >
+        @foreach (var item in GetValueOptions())
+        {
+            <option value="@item.Value">@item.Key</option>
+        }
+    </InputSelect>
+</BsGroup>
+@code
+{
+
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public TEnum Value { get; set; }
+
+    [Parameter] public EventCallback<TEnum> ValueChanged { get; set; }
+
+    [CascadingParameter] public EditMode Mode { get; set; }
+
+    private List<KeyValuePair<string, TEnum>> GetValueOptions()
+    {
+        var result = new List<KeyValuePair<string, TEnum>>();
+        var names = Enum.GetNames(typeof(TEnum)).Cast<string>().ToList();
+        var values =  Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToList();
+        for (int i = 0; i < names.Count; i++)
+        {
+            result.Add(new KeyValuePair<string, TEnum>(names[i], values[i]));
+        }
+        return result;
+    }
+}

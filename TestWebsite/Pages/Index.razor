@@ -1,7 +1,95 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>BlazorFormLayout Test App</h1>
 
-Welcome to your new app.
+<p>Use the controls below to change how the form is rendered</p>
 
-<Component1></Component1>
+<div class="row">
+    <div class="col-sm-2">Orientation:</div>
+    <div class="col-sm-10">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <button class=@verticalButton @onclick="(() => SetOrientation(Orientation.Vertical))">Vertical</button>
+            </li>
+            <li class="list-inline-item">
+                <button class=@horizontalButton @onclick="(() => SetOrientation(Orientation.Horizontal))">Horizontal</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">Mode:</div>
+    <div class="col-sm-10">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <button class=@editBtn @onclick="(() => SetMode(EditMode.Editing))">Editing</button>
+            </li>
+            <li class="list-inline-item">
+                <button class=@readBtn @onclick="(() => SetMode(EditMode.ReadOnly))">Read-only</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<BsCard Header="Test Form" HeaderCss="bg-info">
+
+    <EditForm Model="model">
+        <BsLayout Orientation="@formOrientation" EditMode="FormMode">
+            <BsText @bind-Value="model.Name" Label="Customer name" />
+            <BsText @bind-Value="model.Contact" Label="Contact" />
+            <BsCheckbox @bind-Value="model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes"/>
+            <BsNumber @bind-Value="model.Units" Label="UnitsToOrder" />
+            <BsNumber @bind-Value="model.Price" Label="UnitPrice" />
+            <BsGroup Label="Select colour">
+                <input type='color' @bind="model.FavouriteColour" />
+            </BsGroup>
+            <BsDropdownEnum @bind-Value="model.CustomerType" Label="Business Type" />
+            <BsStaticText Value="model.TotalPrice" />
+            <BsGroup Label="Current form context">
+                <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
+            </BsGroup>
+        </BsLayout>
+    </EditForm>
+</BsCard>
+
+@code
+{
+    EditMode FormMode = EditMode.Editing;
+
+    Orientation formOrientation = Orientation.Horizontal;
+
+
+    string horizontalButton => "btn " + (formOrientation == Orientation.Horizontal ? "btn-primary" : "btn-default");
+
+    string verticalButton => "btn " + (formOrientation == Orientation.Vertical ? "btn-primary" : "btn-default");
+
+    void SetOrientation(Orientation orientation) => formOrientation = orientation;
+
+    void SetMode(EditMode mode) => FormMode = mode;
+
+    string editBtn => "btn " + (FormMode == EditMode.Editing ? "btn-primary" : "btn-light");
+
+    string readBtn => "btn " + (FormMode == EditMode.ReadOnly ? "btn-primary" : "btn-light");
+
+    Customer model = new Customer();
+
+    class Customer
+    {
+        public string Name { get; set; }
+        public string Contact { get; set; }
+        public string FavouriteColour { get; set; }
+        public int Units { get; set; }
+        public decimal Price { get; set; }
+        public decimal Total => Units * Price;
+        public bool IsPriorityCustomer { get; set; }
+        public CustomerTypes CustomerType { get; set; }
+
+        public enum CustomerTypes { Ltd, SoleTrader, PLC }
+
+        public string[] GetCustomerTypes()
+        {
+            return Enum.GetNames(typeof(CustomerTypes));
+        }
+    }
+}

@@ -1,0 +1,15 @@
+﻿@typeparam TNumber
+<BsGroup Label="@Label">
+    <InputNumber @bind-Value="@Value" @bind-Value:event="changed" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
+</BsGroup>
+@code
+{
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public TNumber Value { get; set; }
+
+    [Parameter] public EventCallback<TNumber> ValueChanged { get; set; }
+
+    [CascadingParameter] public EditMode Mode { get; set; }
+
+}
