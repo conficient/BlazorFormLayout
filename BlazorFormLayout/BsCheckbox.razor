@@ -1,10 +1,14 @@
 ﻿<BsGroup Label="@Label">
-    <InputCheckbox @bind-Value="@Value" @bind-Value:event="changed" class="form-check" disabled="@(Mode == EditMode.ReadOnly)" />
-    <label class="form-check-label">@CheckboxLabel</label>
+    <div class="form-check">
+        <InputCheckbox @bind-Value="@Value" @bind-Value:event="changed" id="@Id" class="form-check-input" disabled="@(Mode == EditMode.ReadOnly)" />
+        <label class="form-check-label" for="@Id">@CheckboxLabel</label>
+    </div>
 </BsGroup>
 @code
 {
     [Parameter] public string Label { get; set; }
+
+    [Parameter] public string Id { get; set; }
 
     [Parameter] public string CheckboxLabel { get; set; }
 
