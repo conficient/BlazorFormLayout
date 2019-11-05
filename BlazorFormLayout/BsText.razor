@@ -1,14 +1,7 @@
-﻿<BsGroup Label="@Label">
+﻿@inherits BsControlBase<string>
+<BsGroup Label="@Label" Id="@Id">
     <InputText @bind-Value="@Value" @bind-Value:event="changed" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
 </BsGroup>
 @code
 {
-    [Parameter] public string Label { get; set; }
-
-    [Parameter] public string Value { get; set; }
-
-    [Parameter] public EventCallback<string> ValueChanged { get; set; }
-
-    [CascadingParameter] public EditMode Mode { get; set; }
-
 }

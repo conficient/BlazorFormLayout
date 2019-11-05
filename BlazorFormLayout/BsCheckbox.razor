@@ -1,4 +1,5 @@
-﻿<BsGroup Label="@Label">
+﻿@inherits BsControlBase<bool>;
+<BsGroup Label="@Label" Id="@Id">
     <div class="form-check">
         <InputCheckbox @bind-Value="@Value" @bind-Value:event="changed" id="@Id" class="form-check-input" disabled="@(Mode == EditMode.ReadOnly)" />
         <label class="form-check-label" for="@Id">@CheckboxLabel</label>
@@ -6,16 +7,9 @@
 </BsGroup>
 @code
 {
-    [Parameter] public string Label { get; set; }
-
-    [Parameter] public string Id { get; set; }
-
+    /// <summary>
+    /// The text which appears next to the checkbox itself (optional)
+    /// </summary>
     [Parameter] public string CheckboxLabel { get; set; }
-
-    [Parameter] public bool Value { get; set; }
-
-    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
-
-    [CascadingParameter] public EditMode Mode { get; set; }
 
 }
