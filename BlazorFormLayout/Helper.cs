@@ -9,7 +9,7 @@ namespace BlazorFormLayout
     /// <summary>
     /// Helper classes
     /// </summary>
-    public static class EnumHelper
+    public static class Helper
     {
         /// <summary>
         /// Get a set of key-pair values
@@ -27,5 +27,13 @@ namespace BlazorFormLayout
             }
             return result;
         }
+
+        public static string GetGeneratedName(string name)
+        {
+            if (!string.IsNullOrWhiteSpace(name)) return name;
+            return $"bs_name_{_nextNameId++}";
+        }
+
+        private static int _nextNameId = 0;
     }
 }

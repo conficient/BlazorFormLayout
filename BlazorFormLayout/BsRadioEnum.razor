@@ -1,0 +1,32 @@
+﻿@typeparam TEnum
+@inherits BsControlBase<TEnum>
+<BsGroup Label="@Label" Id="@Id">
+    @foreach (var item in GetValueOptions())
+    {
+        var id = $"{controlName}_{item.Value}";
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="@controlName" id="@id"
+                   checked disabled="@(Mode == EditMode.ReadOnly)"
+                   value="@item.Value" />
+            @*onchange="@((ChangeEventArgs e) => { Value = item.Value; })"*@
+            <label class="form-check-label" for="@id">@item.Key</label>
+        </div>
+
+    }
+    <h1>TODO: not bound!</h1>
+</BsGroup>
+
+@code
+{
+    override protected void OnParametersSet()
+    {
+        base.OnParametersSet();
+        controlName = Helper.GetGeneratedName(Name);
+    }
+
+    [Parameter] public string Name { get; set; }
+
+    private string controlName;
+
+    List<KeyValuePair<string, TEnum>> GetValueOptions() => Helper.GetValueOptions<TEnum>();
+}
