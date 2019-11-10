@@ -4,12 +4,12 @@
     <InputSelect @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" >
         @foreach (var item in GetValueOptions())
         {
-            <option value="@item.Value">@item.Key</option>
+            <option value="@item.Key">@item.Value</option>
         }
     </InputSelect>
 </BsGroup>
 
 @code
 {
-    List<KeyValuePair<string, TEnum>> GetValueOptions() => Helper.GetValueOptions<TEnum>();
+    Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
 }

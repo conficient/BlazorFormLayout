@@ -3,17 +3,17 @@
 <BsGroup Label="@Label" Id="@Id">
     @foreach (var item in GetValueOptions())
     {
-        var id = $"{controlName}_{item.Value}";
+        var thisKey = item.Key;
+        var id = $"{controlName}_{item.Key}";
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="@controlName" id="@id"
-                   checked disabled="@(Mode == EditMode.ReadOnly)"
-                   value="@item.Value" />
-            @*onchange="@((ChangeEventArgs e) => { Value = item.Value; })"*@
-            <label class="form-check-label" for="@id">@item.Key</label>
+                   checked="@(Value.Equals(thisKey))"
+                   disabled="@(Mode == EditMode.ReadOnly)"
+                   value="@thisKey" 
+                   @onchange="@((ChangeEventArgs e) => { Value = thisKey; })" />
+            <label class="form-check-label" for="@id">@item.Value</label>
         </div>
-
     }
-    <h1>TODO: not bound!</h1>
 </BsGroup>
 
 @code
@@ -28,5 +28,5 @@
 
     private string controlName;
 
-    List<KeyValuePair<string, TEnum>> GetValueOptions() => Helper.GetValueOptions<TEnum>();
+    Dictionary<TEnum,string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
 }
