@@ -10,7 +10,7 @@
                    checked="@(Value.Equals(thisKey))"
                    disabled="@(Mode == EditMode.ReadOnly)"
                    value="@thisKey" 
-                   @onchange="@((ChangeEventArgs e) => { Value = thisKey; })" />
+                   @onchange="@((ChangeEventArgs e) => { ChangeValue(thisKey); })" />
             <label class="form-check-label" for="@id">@item.Value</label>
         </div>
     }
@@ -22,6 +22,11 @@
     {
         base.OnParametersSet();
         controlName = Helper.GetGeneratedName(Name);
+    }
+
+    void ChangeValue(TEnum value)
+    {
+        Value = value;
     }
 
     [Parameter] public string Name { get; set; }
