@@ -51,6 +51,7 @@
                     <BsGroup Label="Current form context">
                         <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
                     </BsGroup>
+                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date"  />
                 </BsLayout>
             </EditForm>
         </BsCard>
@@ -104,6 +105,8 @@
         public decimal Total => Units * Price;
         public bool IsPriorityCustomer { get; set; }
         public CustomerTypes CustomerType { get; set; }
+
+        public DateTime DeliveryDate { get; set; }
 
         public enum CustomerTypes { Ltd, SoleTrader, PLC }
 
