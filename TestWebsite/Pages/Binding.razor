@@ -1,0 +1,62 @@
+﻿@page "/"
+
+<h1>Binding Test</h1>
+
+<p>For looking at how binding works in InputBase and InputText</p>
+
+<div class="row">
+    <div class="col">
+        <BsCard Header="Test Form" HeaderCss="bg-info">
+
+            <EditForm Model="model">
+                Name: @*<InputText @bind-Value="@model.Name" class="input-text" />*@
+                <InputDate @bind-Value="@model.DeliveryDate" class="input-text" /> 
+                <InputDate2 @bind-Value="@model.DeliveryDate" class="input-text" /> 
+                <ValidationMessage For="@(()=> model.DeliveryDate)" />
+            </EditForm>
+        </BsCard>
+    </div>
+</div>
+
+@code
+{
+    EditMode FormMode = EditMode.Editing;
+
+    Orientation formOrientation = Orientation.Horizontal;
+
+
+    string horizontalButton => "btn " + (formOrientation == Orientation.Horizontal ? "btn-primary" : "btn-default");
+
+    string verticalButton => "btn " + (formOrientation == Orientation.Vertical ? "btn-primary" : "btn-default");
+
+    void SetOrientation(Orientation orientation) => formOrientation = orientation;
+
+    void SetMode(EditMode mode) => FormMode = mode;
+
+    string editBtn => "btn " + (FormMode == EditMode.Editing ? "btn-primary" : "btn-light");
+
+    string readBtn => "btn " + (FormMode == EditMode.ReadOnly ? "btn-primary" : "btn-light");
+
+    Customer model = new Customer();
+
+    class Customer
+    {
+        public string Name { get; set; }
+        public string Contact { get; set; }
+        public string FavouriteColour { get; set; }
+        public int Units { get; set; }
+        public decimal Price { get; set; }
+        public decimal Total => Units * Price;
+        public bool IsPriorityCustomer { get; set; }
+        public CustomerTypes CustomerType { get; set; }
+
+        public DateTime DeliveryDate { get; set; }
+
+        public enum CustomerTypes { Ltd, SoleTrader, PLC }
+
+        public string[] GetCustomerTypes()
+        {
+            return Enum.GetNames(typeof(CustomerTypes));
+        }
+    }
+}
