@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.138
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFormLayout", "BlazorFormLayout\BlazorFormLayout.csproj", "{D1479A07-EF48-46FA-9DCC-4C72E5B5F224}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorFormLayout", "BlazorFormLayout\BlazorFormLayout.csproj", "{D1479A07-EF48-46FA-9DCC-4C72E5B5F224}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebsite", "TestWebsite\TestWebsite.csproj", "{EA8C6E15-96E9-48F9-B6F7-625C940474B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWebsite", "TestWebsite\TestWebsite.csproj", "{EA8C6E15-96E9-48F9-B6F7-625C940474B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{6A7A3D2A-EA48-4122-926F-13686A45EB68}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{6A
 		README.md = README.md
 		run_testwebsite.cmd = run_testwebsite.cmd
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFormLayout.Tests", "BlazorFormLayout.Tests\BlazorFormLayout.Tests.csproj", "{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.Components.Testing", "Microsoft.AspNetCore.Components.Testing\Microsoft.AspNetCore.Components.Testing.csproj", "{9F96072D-D450-41CE-A17E-97369EB0A05F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +32,14 @@ Global
 		{EA8C6E15-96E9-48F9-B6F7-625C940474B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA8C6E15-96E9-48F9-B6F7-625C940474B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA8C6E15-96E9-48F9-B6F7-625C940474B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
