@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.FluentValidation" Version="1.1.6" />
+    <PackageReference Include="FluentValidation" Version="8.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BlazorFormLayout\BlazorFormLayout.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,13 @@
 ﻿@inherits BsControlBase<string>
-<BsGroup Label="@Label">
-    <p class="form-control-static">@Value</p>
+<BsGroup Label="@Label" TType="string">
+    <p class="form-control-static">@CurrentValue</p>
 </BsGroup>
 @code
 {
+    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
+    {
+        validationErrorMessage = "Should not be updating values";
+        result = null;
+        return false;
+    }
 }

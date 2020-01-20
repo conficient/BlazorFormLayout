@@ -37,8 +37,11 @@
 
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" EditMode="FormMode">
-                    <BsText @bind-Value="@model.Name" Label="Customer name" />
-                    <BsText @bind-Value="@model.Contact" Label="Contact" />
+                    <BsText Label="Customer name" 
+                            @bind-Value="@model.Name" 
+                            />
+                            @*@ValidationFor="@(()=> model.Name)"*@ 
+                    @*<BsText @bind-Value="@model.Contact" Label="Contact" />
                     <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
                     <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
                     <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
@@ -51,7 +54,7 @@
                     <BsGroup Label="Current form context">
                         <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
                     </BsGroup>
-                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date"  />
+                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date"  />*@
                 </BsLayout>
             </EditForm>
         </BsCard>
@@ -60,20 +63,23 @@
         <BsCard Header="Customer" HeaderCss="bg-info">
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" >
-                    <BsStaticText Value="@model.Name" Label="Customer name" />
-                    <BsStaticText Value="@model.Contact" Label="Contact" />
+                    <BsStaticText @bind-Value="@model.Name" Label="Customer name" />
+                    @*<BsStaticText Value="@model.Contact" Label="Contact" />
                     <BsStaticText Value="@model.IsPriorityCustomer.ToString()" Label="Priority"  />
                     <BsStaticText Value="@model.Units.ToString()" Label="UnitsToOrder"  />
                     <BsStaticText Value="@model.Price.ToString()" Label="UnitPrice" />
                     <BsStaticText Value="@model.FavouriteColour?.ToString()" Label="Colour" />
                     <BsStaticText Value="@model.CustomerType.ToString()" Label="Business Type" />
-                    <BsStaticText Value="@model.Total.ToString("c")" />
+                    <BsStaticText Value="@model.Total.ToString("c")" />*@
                 </BsLayout>
             </EditForm>
         </BsCard>
     </div>
 </div>
-
+<button @onclick="ShowCurrent">Show</button>
+<pre>
+@json
+</pre>
 @code
 {
     EditMode FormMode = EditMode.Editing;
@@ -95,24 +101,12 @@
 
     Customer model = new Customer();
 
-    class Customer
+    
+
+    void ShowCurrent()
     {
-        public string Name { get; set; }
-        public string Contact { get; set; }
-        public string FavouriteColour { get; set; }
-        public int Units { get; set; }
-        public decimal Price { get; set; }
-        public decimal Total => Units * Price;
-        public bool IsPriorityCustomer { get; set; }
-        public CustomerTypes CustomerType { get; set; }
-
-        public DateTime DeliveryDate { get; set; }
-
-        public enum CustomerTypes { Ltd, SoleTrader, PLC }
-
-        public string[] GetCustomerTypes()
-        {
-            return Enum.GetNames(typeof(CustomerTypes));
-        }
+        json = System.Text.Json.JsonSerializer.Serialize(model);
     }
+
+    string json = "not loaded";
 }

@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
+
+
+// reference: https://chrissainty.com/building-custom-input-components-for-blazor-using-inputbase/ 
 
 namespace BlazorFormLayout
 {
-    public class BsControlBase<TValue> : ComponentBase
+    public abstract class BsControlBase<TValue> : InputBase<TValue>
     {
         /// <summary>
         /// Label for the form control
@@ -20,17 +24,11 @@ namespace BlazorFormLayout
         /// <summary>
         /// Edit mode (cascaded param from the BsLayout control)
         /// </summary>
-        [CascadingParameter] public EditMode Mode {get;set;}
+        [CascadingParameter] public EditMode Mode { get; set; }
 
         /// <summary>
-        /// The bound value
+        /// Validation parameter - if blank, no validation is shown for this control
         /// </summary>
-        [Parameter] public TValue Value { get; set; }
-
-        /// <summary>
-        /// Value changed callback
-        /// </summary>
-        [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
-
-}
+        [Parameter] public Expression<Func<TValue>> ValidationFor { get; set; }
+    }
 }

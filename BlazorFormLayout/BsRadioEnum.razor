@@ -1,4 +1,5 @@
-﻿@typeparam TEnum
+﻿<p>TODO</p>
+@*@typeparam TEnum
 @inherits BsControlBase<TEnum>
 <BsGroup Label="@Label" Id="@Id">
     @foreach (var item in GetValueOptions())
@@ -34,4 +35,27 @@
     private string controlName;
 
     Dictionary<TEnum,string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
-}
+
+    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    {
+        // check type is enum
+        if (typeof(TEnum).IsEnum)
+        {
+            // attempt to parse value
+            var success = BindConverter.TryConvertTo<TEnum>(value, System.Globalization.CultureInfo.CurrentCulture, out var parsedValue);
+            if(success)
+            {
+                result = parsedValue;
+                validationErrorMessage = null;
+                return true;
+            }
+            else
+            {
+                result = default;
+                validationErrorMessage = $"The {FieldIdentifier.FieldName} field is not valid";
+                return false;
+            }
+        }
+        throw new InvalidOperationException($"{GetType()} does not support the type '{typeof(TEnum)}'.");
+    }
+}*@

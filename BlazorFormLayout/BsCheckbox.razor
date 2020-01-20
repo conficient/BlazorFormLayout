@@ -1,7 +1,9 @@
-﻿@inherits BsControlBase<bool>;
+﻿<p>TODO</p>
+@*@inherits BsControlBase<bool>;
 <BsGroup Label="@Label" Id="@Id">
     <div class="form-check">
-        <InputCheckbox @bind-Value="@Value" @bind-Value:event="changed" id="@Id" class="form-check-input" disabled="@(Mode == EditMode.ReadOnly)" />
+        <input type="checkbox" id="@Id"  class="form-check-input" @bind="CurrentValue"
+               disabled="@(Mode == EditMode.ReadOnly)" />
         <label class="form-check-label" for="@Id">@CheckboxLabel</label>
     </div>
 </BsGroup>
@@ -12,4 +14,8 @@
     /// </summary>
     [Parameter] public string CheckboxLabel { get; set; }
 
-}
+    protected override bool TryParseValueFromString(string value, out bool result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException($"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
+    }
+}*@

@@ -1,7 +1,13 @@
-﻿<div class="@formclass">
+﻿@using System.Linq.Expressions
+@typeparam TType
+<div class="@formclass">
     <label for="@Id" class="@labelclass">@Label</label>
     <div class="@divclass">
         @ChildContent
+        @if(ValidationFor != null)
+        {
+            <ValidationMessage For="@ValidationFor" />
+        }
     </div>
 </div>
 @code
@@ -22,6 +28,11 @@
     /// Cascading layout source
     /// </summary>
     [CascadingParameter] public Orientation Orientation { get; set; }
+
+    /// <summary>
+    /// Validation param if present
+    /// </summary>
+    [Parameter] public Expression<Func<TType>> ValidationFor { get; set; }
 
     /// <summary>
     /// Form orientation

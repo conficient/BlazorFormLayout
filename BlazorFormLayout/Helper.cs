@@ -28,6 +28,11 @@ namespace BlazorFormLayout
             return result;
         }
 
+        /// <summary>
+        /// Create a generated name for a form control
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static string GetGeneratedName(string name)
         {
             if (!string.IsNullOrWhiteSpace(name)) return name;

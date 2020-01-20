@@ -1,6 +1,6 @@
-﻿@inherits BsControlBase<string>
+﻿@*@inherits BsControlBase<string>
 <BsGroup Label="@Label" Id="@Id">
-    <InputSelect @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" >
+    <InputSelect @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
         @foreach (var item in ValueOptions)
         {
             <option>@item</option>
@@ -11,4 +11,9 @@
 {
     [Parameter] public IEnumerable<string> ValueOptions { get; set; }
 
-}
+    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+}*@
+<p>TODO</p>

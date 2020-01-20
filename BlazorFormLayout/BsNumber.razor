@@ -1,5 +1,13 @@
-﻿@typeparam TNumber
+﻿@*@typeparam TNumber
 @inherits BsControlBase<TNumber>
 <BsGroup Label="@Label" Id="@Id">
-    <InputNumber @bind-Value="@Value" @bind-Value:event="changed" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" />
+     <InputNumber @bind-Value="@Value" @bind-Value:event="changed" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" />
 </BsGroup>
+@code
+{ 
+    override bool TryParseValueFromString(string value, out TNumber result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+}*@
+<p>TODO</p>

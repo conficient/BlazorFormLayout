@@ -1,4 +1,13 @@
 ﻿@inherits BsControlBase<string>
-<BsGroup Label="@Label" Id="@Id">
-    <InputText @bind-Value="@Value" @bind-Value:event="changed" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
+<BsGroup Label="@Label" Id="@Id" TType="string" ValidationFor="@ValidationFor">
+    <input type="text" @bind="@CurrentValue" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
 </BsGroup>
+@code{
+
+    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
+    }
+}
