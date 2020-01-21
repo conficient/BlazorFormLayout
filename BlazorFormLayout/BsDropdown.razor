@@ -11,7 +11,7 @@
 {
     [Parameter] public IEnumerable<string> ValueOptions { get; set; }
 
-    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
+    protected protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
     {
         throw new NotImplementedException();
     }

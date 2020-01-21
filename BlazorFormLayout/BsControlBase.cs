@@ -26,9 +26,5 @@ namespace BlazorFormLayout
         /// </summary>
         [CascadingParameter] public EditMode Mode { get; set; }
 
-        /// <summary>
-        /// Validation parameter - if blank, no validation is shown for this control
-        /// </summary>
-        [Parameter] public Expression<Func<TValue>> ValidationFor { get; set; }
     }
 }

@@ -1,21 +1,21 @@
 ﻿@*@typeparam TEnum
-@inherits BsControlBase<TEnum>
-<BsGroup Label="@Label" Id="@Id" ValidationFor="@ValidationFor">
-    <InputSelect @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" >
-            @foreach (var item in GetValueOptions())
-            {
-                <option value="@item.Key">@item.Value</option>
-            }
-        </InputSelect>
-</BsGroup>
+    @inherits BsControlBase<TEnum>
+    <BsGroup Label="@Label" Id="@Id" ValueExpression="@ValidationFor">
+        <select @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" >
+                @foreach (var item in GetValueOptions())
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+    </BsGroup>
 
-@code
-{
-    Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
-
-    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    @code
     {
-        throw new NotImplementedException();
-    }
-}*@
+        Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
+
+        protected protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+        {
+            throw new NotImplementedException();
+        }
+    }*@
 <p>TODO</p>

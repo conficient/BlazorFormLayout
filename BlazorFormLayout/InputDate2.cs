@@ -16,7 +16,8 @@ namespace BlazorFormLayout
         {
             if (value is DateTime dt)
             {
-                if (dt.Year == 1) return string.Empty; // handle un-set dates
+                if(dt == DateTime.MinValue)
+                    return string.Empty; // handle dates with no value set
             }
             return base.FormatValueAsString(value);
         }
@@ -62,7 +63,7 @@ namespace BlazorFormLayout
 //        }
 
 //        /// <inheritdoc />
-//        protected override bool TryParseValueFromString(string value, out DateTime result, out string validationErrorMessage)
+//        protected protected override bool TryParseValueFromString(string value, out DateTime result, out string validationErrorMessage)
 //        {
 //            // Unwrap nullable types. We don't have to deal with receiving empty values for nullable
 //            // types here, because the underlying InputBase already covers that.

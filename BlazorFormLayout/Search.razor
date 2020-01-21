@@ -1,0 +1,20 @@
+﻿<input type="search" class="search" value="@currentValue" @oninput="HandleInput" />
+@code
+{
+    [Parameter]
+    public string Value
+    {
+        get => currentValue;
+        set => currentValue = value;
+    }
+
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    private string currentValue;
+
+    private async Task HandleInput(ChangeEventArgs args)
+    {
+        currentValue = args.Value.ToString();
+        await ValueChanged.InvokeAsync(args.Value.ToString());
+    }
+}

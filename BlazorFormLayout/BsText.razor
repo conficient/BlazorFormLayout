@@ -1,6 +1,7 @@
 ﻿@inherits BsControlBase<string>
-<BsGroup Label="@Label" Id="@Id" TType="string" ValidationFor="@ValidationFor">
-    <input type="text" @bind="@CurrentValue" class="form-control" disabled="@(Mode == EditMode.ReadOnly)" />
+<BsGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+    <input type="text" @attributes="AdditionalAttributes" class="form-control @CssClass"
+           @bind="@CurrentValue" disabled="@(Mode == EditMode.ReadOnly)"  />
 </BsGroup>
 @code{
 

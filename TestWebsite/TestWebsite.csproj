@@ -16,6 +16,10 @@
     <Watch Include="..\BlazorFormLayout\**\*.razor" />
   </ItemGroup>
   
+  <ItemGroup>
+    <Watch Include="..\BlazorFormLayout\**\*.razor" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- see https://remibou.github.io/Make-your-Blazor-development-faster/ -->
     <BlazorLinkOnBuild  Condition="'$(Configuration)'!='Release'">false</BlazorLinkOnBuild>

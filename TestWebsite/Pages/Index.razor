@@ -32,15 +32,15 @@
     </div>
 </div>
 <div class="row">
-    <div class="col">
+    <div class="col-xs-12 col-sm-6">
         <BsCard Header="Test Form" HeaderCss="bg-info">
 
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" EditMode="FormMode">
                     <BsText Label="Customer name" 
+                            class="input-group-sm" 
                             @bind-Value="@model.Name" 
-                            />
-                            @*@ValidationFor="@(()=> model.Name)"*@ 
+                            maxlength="20" />
                     @*<BsText @bind-Value="@model.Contact" Label="Contact" />
                     <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
                     <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
@@ -59,7 +59,7 @@
             </EditForm>
         </BsCard>
     </div>
-    <div class="col">
+    <div class="col-xs-12 col-sm-6">
         <BsCard Header="Customer" HeaderCss="bg-info">
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" >

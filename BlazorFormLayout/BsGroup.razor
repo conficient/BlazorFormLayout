@@ -1,13 +1,7 @@
-﻿@using System.Linq.Expressions
-@typeparam TType
-<div class="@formclass">
+﻿<div class="@formclass">
     <label for="@Id" class="@labelclass">@Label</label>
     <div class="@divclass">
         @ChildContent
-        @if(ValidationFor != null)
-        {
-            <ValidationMessage For="@ValidationFor" />
-        }
     </div>
 </div>
 @code
@@ -29,10 +23,6 @@
     /// </summary>
     [CascadingParameter] public Orientation Orientation { get; set; }
 
-    /// <summary>
-    /// Validation param if present
-    /// </summary>
-    [Parameter] public Expression<Func<TType>> ValidationFor { get; set; }
 
     /// <summary>
     /// Form orientation
@@ -41,7 +31,7 @@
 
     private string formclass => IsVertical ? "form-group" : "form-group row";
 
-    private string labelclass => IsVertical ? "" : "col-sm-2 col-form-label";
+    private string labelclass => IsVertical ? "" : "col-sm-4 col-md-3 col-form-label";
 
-    private string divclass => IsVertical ? "" : "col-sm-10";
+    private string divclass => IsVertical ? "" : "col-sm-8 col-md-9";
 }
