@@ -1,6 +1,15 @@
 # BlazorFormLayout
 Helper components for rendering form content in Blazor using Bootstrap v4
 
+## Todo
+
+- [ ] check binding
+- [ ] re-enable other types
+- [ ] fix date binding for unset dates
+- [ ] create a group which has no validation?
+- [ ] clean up test code
+- [ ] update docs
+
 ## Overview
 
 When creating forms in web apps, I find all the boiler-plate HTML required in Bootstrap 4 
