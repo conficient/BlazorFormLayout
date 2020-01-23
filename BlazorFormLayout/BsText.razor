@@ -1,8 +1,8 @@
 ﻿@inherits BsControlBase<string>
-<BsGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
     <input type="text" @attributes="AdditionalAttributes" class="form-control @CssClass"
            @bind="@CurrentValue" disabled="@(Mode == EditMode.ReadOnly)"  />
-</BsGroup>
+</BsValidatedGroup>
 @code{
 
     protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)

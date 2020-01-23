@@ -21,7 +21,7 @@ namespace BlazorFormLayout.Tests
                 .Add("Label", "a")
                 .ToParameterView();
 
-            var component = host.AddComponent<BsGroup<string>>(parameters);
+            var component = host.AddComponent<BsGroup>(parameters);
 
             // check form group
             var html = component.Find("div").OuterHtml;

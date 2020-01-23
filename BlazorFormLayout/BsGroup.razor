@@ -1,4 +1,5 @@
-﻿<div class="@formclass">
+﻿@* Creates a Bootstrap v4 control group with label *@
+<div class="@formclass">
     <label for="@Id" class="@labelclass">@Label</label>
     <div class="@divclass">
         @ChildContent
@@ -22,7 +23,6 @@
     /// Cascading layout source
     /// </summary>
     [CascadingParameter] public Orientation Orientation { get; set; }
-
 
     /// <summary>
     /// Form orientation

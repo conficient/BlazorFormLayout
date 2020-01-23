@@ -1,14 +1,25 @@
-﻿@inherits BsControlBase<string>
-    <BsGroup Label="@Label" TType="string">
-        <input type="text" readonly tablindex="-1" class="form-control-plaintext" id="@Id" value="@CurrentValue">
-    </BsGroup>
+﻿@inherits ComponentBase
+<BsGroup Label="@Label" Id="@Id">
+    <input type="text" readonly tablindex="-1" class="form-control-plaintext" id="@Id" @bind="@Value">
+</BsGroup>
 @code
 {
-    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
-    {
-        validationErrorMessage = "Should not be updating values";
-        result = null;
-        return false;
-    }
+    /// <summary>
+    /// Label for the form control
+    /// </summary>
+    [Parameter] public string Label { get; set; }
 
+    /// <summary>
+    /// `id` for the input control
+    /// </summary>
+    [Parameter] public string Id { get; set; }
+
+    /// <summary>
+    /// Edit mode (cascaded param from the BsLayout control)
+    /// </summary>
+    [CascadingParameter] public EditMode Mode { get; set; }
+
+    [Parameter] public string Value { get; set; }
+
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
 }

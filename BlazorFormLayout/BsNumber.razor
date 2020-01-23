@@ -1,8 +1,8 @@
 ﻿@typeparam TNumber
 @inherits BsControlBase<TNumber>
-<BsGroup Label="@Label" Id="@Id" TType="TNumber" ValueExpression="@ValueExpression">
+<BsValidatedGroup Label="@Label" Id="@Id" TType="TNumber" ValueExpression="@ValueExpression">
      <input type="number" @bind="@CurrentValue" class="form-control @CssClass" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" />
-</BsGroup>
+</BsValidatedGroup>
 @code
 { 
     protected override bool TryParseValueFromString(string value, out TNumber result, out string validationErrorMessage)
