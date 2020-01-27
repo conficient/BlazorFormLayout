@@ -12,7 +12,7 @@ namespace BlazorFormLayout
     public static class Helper
     {
         /// <summary>
-        /// Get a set of key-pair values
+        /// Get a set of key-pair values from an Enum type
         /// </summary>
         /// <typeparam name="TEnum"></typeparam>
         /// <returns></returns>
@@ -28,18 +28,6 @@ namespace BlazorFormLayout
             return result;
         }
 
-        /// <summary>
-        /// Create a generated name for a form control
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static string GetGeneratedName(string name)
-        {
-            if (!string.IsNullOrWhiteSpace(name)) return name;
-            return $"bs_name_{_nextNameId++}";
-        }
-
-        private static int _nextNameId = 0;
     }
 
 }

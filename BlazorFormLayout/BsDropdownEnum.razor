@@ -1,21 +1,26 @@
-﻿@*@typeparam TEnum
-    @inherits BsControlBase<TEnum>
-    <BsGroup Label="@Label" Id="@Id" ValueExpression="@ValidationFor">
-        <select @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)" >
-                @foreach (var item in GetValueOptions())
-                {
-                    <option value="@item.Key">@item.Value</option>
-                }
-            </select>
-    </BsGroup>
-
-    @code
-    {
-        Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
-
-        protected protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+﻿@typeparam TEnum
+@inherits BsControlBase<TEnum>
+<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+    <select @bind="@CurrentValue" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
+        @foreach (var item in GetValueOptions())
         {
-            throw new NotImplementedException();
+            <option value="@item.Key">@item.Value</option>
         }
-    }*@
-<p>TODO</p>
+    </select>
+</BsValidatedGroup>
+
+@code
+    {
+    /// <summary>
+    /// optional parameter: allow user to set values
+    /// </summary>
+    [Parameter]
+    public Dictionary<TEnum, string> ValueOptions { get; set; }
+
+    Dictionary<TEnum, string> GetValueOptions() => ValueOptions ?? Helper.GetValueOptions<TEnum>();
+
+    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+}

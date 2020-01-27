@@ -223,7 +223,7 @@ namespace BlazorFormLayout
         {
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             if (EditContext != null)
             {

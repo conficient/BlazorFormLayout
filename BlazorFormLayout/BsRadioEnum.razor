@@ -1,49 +1,55 @@
-﻿<p>TODO</p>
-@*@typeparam TEnum
+﻿@typeparam TEnum
 @inherits BsControlBase<TEnum>
-<BsGroup Label="@Label" Id="@Id">
-    @foreach (var item in GetValueOptions())
+<BsValidatedGroup Label="@Label" Id="@Id" TType="TEnum" ValueExpression="@ValueExpression">
+    @foreach (var item in radioOptions)
     {
         var thisKey = item.Key;
-        var id = $"{controlName}_{item.Key}";
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="@controlName" id="@id"
-                   checked="@(Value.Equals(thisKey))"
-                   disabled="@(Mode == EditMode.ReadOnly)"
-                   value="@thisKey" 
-                   @onchange="@((ChangeEventArgs e) => { ChangeValue(thisKey); })" />
-            <label class="form-check-label" for="@id">@item.Value</label>
+        bool isChecked = CurrentValue.Equals(thisKey);
+
+        <div class="form-check @InLineCss">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio"
+                       checked="@isChecked"
+                       disabled="@(Mode == EditMode.ReadOnly)"
+                       value="@thisKey"
+                       @onchange="@((ChangeEventArgs e) => CurrentValue = thisKey)" />
+                @item.Value
+            </label>
         </div>
     }
-</BsGroup>
+</BsValidatedGroup>
 
 @code
 {
+    [Parameter] public string Name { get; set; }
+
+    /// <summary>
+    /// Should radio buttons be inline or on separate lines (default = inline)
+    /// </summary>
+    [Parameter] public bool Inline { get; set; } = true;
+
+    string InLineCss => Inline ? "form-check-inline" : string.Empty;
+
     override protected void OnParametersSet()
     {
         base.OnParametersSet();
-        controlName = Helper.GetGeneratedName(Name);
+        radioOptions = Helper.GetValueOptions<TEnum>();
     }
 
-    void ChangeValue(TEnum value)
-    {
-        Value = value;
-    }
+    private Dictionary<TEnum, string> radioOptions;
 
-    [Parameter] public string Name { get; set; }
+    //private string controlName;
 
-    private string controlName;
+    //Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
 
-    Dictionary<TEnum,string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
-
-    protected protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
     {
         // check type is enum
         if (typeof(TEnum).IsEnum)
         {
             // attempt to parse value
             var success = BindConverter.TryConvertTo<TEnum>(value, System.Globalization.CultureInfo.CurrentCulture, out var parsedValue);
-            if(success)
+            if (success)
             {
                 result = parsedValue;
                 validationErrorMessage = null;
@@ -58,4 +64,5 @@
         }
         throw new InvalidOperationException($"{GetType()} does not support the type '{typeof(TEnum)}'.");
     }
-}*@
+
+}
