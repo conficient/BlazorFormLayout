@@ -1,17 +1,17 @@
 ﻿@typeparam TType
 @inherits BsControlBase<TType>
 <BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
-    <InputSelect @bind-Value="@CurrentValue" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
+    <select @bind="@CurrentValue" class="form-control @CssClass" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
         @foreach (var item in ValueOptions)
         {
             <option value="@item.Key">@item.Value</option>
         }
-    </InputSelect>
+    </select>
 </BsValidatedGroup>
 @code
 {
     /// <summary>
-    /// The value options to set 
+    /// The value options to set
     /// </summary>
     [Parameter]
     public Dictionary<TType, string> ValueOptions { get; set; }
