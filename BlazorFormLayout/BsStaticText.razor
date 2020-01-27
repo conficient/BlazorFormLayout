@@ -1,6 +1,6 @@
 ﻿@inherits ComponentBase
 <BsGroup Label="@Label" Id="@Id">
-    <input type="text" readonly tablindex="-1" class="form-control-plaintext" id="@Id" value="@Value">
+    <input type="text" readonly tablindex="-1" class="form-control-plaintext" id="@Id" value="@ValueAsString">
 </BsGroup>
 @code
 {
@@ -19,7 +19,11 @@
     /// </summary>
     [CascadingParameter] public EditMode Mode { get; set; }
 
-    [Parameter] public string Value { get; set; }
+    /// <summary>
+    /// The value to show
+    /// </summary>
+    [Parameter] public object Value { get; set; }
 
-    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    private string ValueAsString => Value == null ? string.Empty : $"{Value}";
+
 }

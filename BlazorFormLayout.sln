@@ -14,9 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{6A
 		run_testwebsite.cmd = run_testwebsite.cmd
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFormLayout.Tests", "BlazorFormLayout.Tests\BlazorFormLayout.Tests.csproj", "{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorFormLayout.Tests", "BlazorFormLayout.Tests\BlazorFormLayout.Tests.csproj", "{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNetCore.Components.Testing", "Microsoft.AspNetCore.Components.Testing\Microsoft.AspNetCore.Components.Testing.csproj", "{9F96072D-D450-41CE-A17E-97369EB0A05F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Components.Testing", "Microsoft.AspNetCore.Components.Testing\Microsoft.AspNetCore.Components.Testing.csproj", "{9F96072D-D450-41CE-A17E-97369EB0A05F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docs", "docs\docs.csproj", "{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
