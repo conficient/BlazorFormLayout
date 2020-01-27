@@ -35,6 +35,7 @@
                     </BsGroup>
                     <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" />
                     <BsDate @bind-Value="@model.OptionalDate" Label="Optional Date" />
+                    <BsCheckbox @bind-Value="@model.AcceptTerms" CheckboxLabel="I agree to give you an arm and a leg" Label="Accept terms" />
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>

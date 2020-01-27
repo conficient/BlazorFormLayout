@@ -20,6 +20,8 @@ namespace TestWebsite
             RuleFor(c => c.DeliveryDate).GreaterThan(DateTime.Today).WithMessage("Delivery date must be in the future!");
             RuleFor(c => c.Price).GreaterThan(0m).WithMessage("Price must be > 0");
             RuleFor(c => c.Units).GreaterThan(0).WithMessage("Order must be at least 1 unit");
+
+            RuleFor(c => c.AcceptTerms).Equal(true).WithMessage("You must accept our terms to continue!");
         }
         
     }

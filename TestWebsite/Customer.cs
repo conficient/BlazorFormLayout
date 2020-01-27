@@ -26,6 +26,12 @@ namespace TestWebsite
 
         public enum CustomerTypes { Ltd, SoleTrader, PLC }
 
+        /// <summary>
+        /// Must select to proceed
+        /// </summary>
+        public bool AcceptTerms { get; set; }
+
+
         public static string[] GetCustomerTypes()
         {
             return Enum.GetNames(typeof(CustomerTypes));
