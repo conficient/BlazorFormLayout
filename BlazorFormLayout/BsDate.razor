@@ -1,15 +1,33 @@
 ﻿@using System
 @using System.Globalization
-@* @using Microsoft.AspNetCore.Components.Rendering *@
 @typeparam TValue
 @inherits BsControlBase<TValue>
 <BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
     <input type="date" @attributes="AdditionalAttributes" class="form-control @CssClass"
-           value="@CurrentValueAsString" onchange="@ValueChanged"
+           value="@CurrentValueAsString" @onchange="@CurrentValueChanged"
            disabled="@(Mode == EditMode.ReadOnly)" />
 </BsValidatedGroup>
 @code
 {
+    protected override void OnInitialized()
+    {
+        // set isNullable
+        var underlyingType = Nullable.GetUnderlyingType(typeof(TValue));
+        isNullable = (underlyingType != null);
+        base.OnInitialized();
+    }
+
+    /// <summary>
+    /// Set date value
+    /// </summary>
+    /// <param name="e"></param>
+    protected void CurrentValueChanged(ChangeEventArgs e) => CurrentValueAsString = (string)e.Value;
+
+    /// <summary>
+    /// Is the datatype nullable
+    /// </summary>
+    private bool isNullable;
+
     private const string DateFormat = "yyyy-MM-dd"; // Compatible with HTML date inputs
 
     /// <summary>
@@ -23,9 +41,14 @@
         switch (value)
         {
             case DateTime dateTimeValue:
+                // if value is default date, return a null string
+                if (dateTimeValue == DateTime.MinValue) return null;
                 return BindConverter.FormatValue(dateTimeValue, DateFormat, CultureInfo.InvariantCulture);
+
             case DateTimeOffset dateTimeOffsetValue:
+                if (dateTimeOffsetValue == DateTimeOffset.MinValue) return null;
                 return BindConverter.FormatValue(dateTimeOffsetValue, DateFormat, CultureInfo.InvariantCulture);
+
             default:
                 return string.Empty; // Handles null for Nullable<DateTime>, etc.
         }

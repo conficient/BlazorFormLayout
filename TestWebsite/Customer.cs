@@ -19,9 +19,14 @@ namespace TestWebsite
 
         public DateTime DeliveryDate { get; set; }
 
+        /// <summary>
+        /// For testing nullable dates
+        /// </summary>
+        public DateTime? OptionalDate { get; set; }
+
         public enum CustomerTypes { Ltd, SoleTrader, PLC }
 
-        public string[] GetCustomerTypes()
+        public static string[] GetCustomerTypes()
         {
             return Enum.GetNames(typeof(CustomerTypes));
         }

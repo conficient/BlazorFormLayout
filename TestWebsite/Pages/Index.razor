@@ -37,9 +37,9 @@
 
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" EditMode="FormMode">
-                    <BsText Label="Customer name" 
-                            class="input-group-sm" 
-                            @bind-Value="@model.Name" 
+                    <BsText Label="Customer name"
+                            class="input-group-sm"
+                            @bind-Value="@model.Name"
                             maxlength="20" />
                     <BsText @bind-Value="@model.Contact" Label="Contact" />
                     <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
@@ -49,12 +49,13 @@
                         <input type='color' @bind="model.FavouriteColour" />
                     </BsGroup>
                     @*<BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business Type" />
-                    <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />*@
+        <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />*@
                     <BsStaticText Value="@model.Total.ToString("c")" />
                     <BsGroup Label="Current form context">
                         <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
                     </BsGroup>
                     <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" />
+                    <BsDate @bind-Value="@model.OptionalDate" Label="Optional Date" />
                 </BsLayout>
             </EditForm>
         </BsCard>
@@ -71,6 +72,12 @@
                     <BsStaticText Value="@model.FavouriteColour?.ToString()" Label="Colour" />
                     <BsStaticText Value="@model.CustomerType.ToString()" Label="Business Type" />
                     <BsStaticText Value="@model.Total.ToString("c")" />*@
+                    <BsGroup Label="Delivery Date">
+                        @model.DeliveryDate.ToShortDateString()
+                    </BsGroup>
+                    <BsGroup Label="Optional Date">
+                        @model.OptionalDate?.ToShortDateString()
+                    </BsGroup>
                 </BsLayout>
             </EditForm>
         </BsCard>
