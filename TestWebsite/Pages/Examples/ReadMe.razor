@@ -1,0 +1,31 @@
+﻿@page "/Examples/ReadMe"
+
+<h1>BlazorFormLayout ReadMe Example</h1>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <h3>Example</h3>
+        <EditForm Model="model">
+            <BsLayout Orientation="Orientation.Horizontal">
+                <BsText @bind-Value="model.Name" Label="Customer name" />
+                <BsText @bind-Value="model.Contact" Label="Contact" />
+                <BsCheckbox @bind-Value="model.IsPriorityCustomer" Label="Priority" />
+                <BsNumber @bind-Value="model.Units" Label="Units to Order" />
+                <BsNumber @bind-Value="model.Price" Label="Unit Price" />
+                <BsGroup Label="Select colour">
+                    <input type='color' @bind="model.FavouriteColour" />
+                </BsGroup>
+                <BsDropdownEnum @bind-Value="model.CustomerType" Label="Business Type" />
+                <BsRadioEnum @bind-Value="model.DeliveryOption" Label="Delivery option" />
+                <BsStaticText Value="@model.Total.ToString("c")" Label="Total" />
+                <BsDate @bind-Value="model.DeliveryDate" Label="Delivery date" />
+            </BsLayout>
+        </EditForm>
+    </div>
+
+</div>
+@code
+{
+
+    Customer model = new Customer();
+}
