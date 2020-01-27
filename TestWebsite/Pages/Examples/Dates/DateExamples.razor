@@ -20,10 +20,16 @@
             <EditForm Model="model" OnValidSubmit="HandleSubmit">
                 <FluentValidationValidator Validator="validator" />
                 <ValidationSummary />
-                <BsLayout>
+                <BsLayout Orientation="Orientation.Vertical">
                     <BsDate @bind-Value="@model.Date1" Label="Date1" />
                     <BsDate @bind-Value="@model.Date2" Label="Date2 (nullable)" />
-                    <BsDate @bind-Value="@model.Date3" Label="Date3" />
+                    <BsGroup>
+                        The next date sets the <code>MinDate</code> and <code>MaxDate</code> parameters. These set the
+                        <code>min</code> and <code>max</code> values of the <code>&lt;input</code> control, which 
+                        limit the dates shown on any browser calendar. You should still perform server-side validation though
+                        as any browser tools can edit the control and remove these attributes!
+                    </BsGroup>
+                    <BsDate @bind-Value="@model.Date3" Label="Date3" MinDate="@DateTime.Today" MaxDate="@DateTime.Today.AddMonths(1)" />
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>

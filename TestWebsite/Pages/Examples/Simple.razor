@@ -1,0 +1,31 @@
+﻿@page "/Examples/Simple"
+
+<h1>BlazorFormLayout Simplest Example</h1>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <h3>Editable Horizontal</h3>
+        <EditForm Model="example">
+            <BsLayout Orientation="Orientation.Horizontal" EditMode="EditMode.Editing">
+                <BsText @bind-Value="@example.Name" Label="Your name" />
+            </BsLayout>
+        </EditForm>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <h3>Read-Only Vertical</h3>
+        <EditForm Model="example">
+            <BsLayout Orientation="Orientation.Vertical" EditMode="EditMode.ReadOnly">
+                <BsText @bind-Value="@example.Name" Label="Your name" />
+            </BsLayout>
+        </EditForm>
+    </div>
+</div>
+@code
+{
+    class Example
+    {
+        public string Name { get; set; }
+    }
+
+    Example example = new Example();
+}

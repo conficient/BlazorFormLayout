@@ -3,10 +3,11 @@ Helper components for rendering form content in Blazor using Bootstrap v4
 
 ## Todo
 
-- [ ] check binding
-- [ ] re-enable other types
-- [ ] fix date binding for unset dates
-- [ ] create a group which has no validation?
+- [x] check binding
+- [x] re-enable other types
+- [x] fix date binding for unset dates
+- [x] create a group which has no validation?
+- [ ] fix `BsDropDown` on _Cost region_
 - [ ] clean up test code
 - [ ] update docs
 
@@ -19,21 +20,23 @@ create components to hide away all that tedious nested HTML `div` tags and focus
 ### Example
 This code creates a Bootstrap form with several bound fields.
 ```html
-<EditForm>
+<EditForm Mode="model">
   <BsLayout Orientation="Horizontal">
-    <BsInputText @bind-Value="model.Name" Label="Customer name" >
-    <BsInputText @bind-Value="model.Contact" Label="Contact" >
-    <BsInputCheckbox @bind-Value="model.IsPriorityCustomer" Label="Priority" />
-    <BsInputNumber @bind-Value="model.Units" Label="Units to Order" />
-    <BsInputNumber @bind-Value="model.Price" Label="Unit Price" />
+    <BsText @bind-Value="@model.Name" Label="Customer name" >
+    <BsText @bind-Value="@model.Contact" Label="Contact" >
+    <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" />
+    <BsNumber @bind-Value="@model.Units" Label="Units to Order" />
+    <BsNumber @bind-Value="@model.Price" Label="Unit Price" />
     <BsGroup Label="Select colour">
       <input type='color' @bind="model.FavouriteColour" />
     </BsGroup>
-    <BsDropdown @bind-Value="model.CustomerType" @options="CustomerTypeList" Label="Business Type" />
-    <BsStaticText Value="model.TotalPrice" />
+    <BsDropdownEnum @bind-Value="model.CustomerType" @options="CustomerTypeList" Label="Business Type" />
+    <BsStaticText Value="@model.Total.ToString("c")" Label="Total" />
+    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery date" />
   </BsLayout>
 </EditForm>
 ```
+The rendered form looks like this:
 
 The `BsLayout` is a container providing cascading control over the layout of the child 
 elements. This container is optional - if it's not present, the controls will use a default layout.
@@ -53,4 +56,8 @@ Rendered example: [tbc]
 
 ## Getting Started
 
+See the [Getting Started](docs/GettingStarted.md) section of the documentation
+
 ## Documentation
+
+[Table of Contents](docs/Contents.md)
