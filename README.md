@@ -7,9 +7,12 @@ Helper components for rendering form content in Blazor using Bootstrap v4
 - [x] re-enable other types
 - [x] fix date binding for unset dates
 - [x] create a group which has no validation?
-- [ ] fix `BsDropDown` on _Cost region_
-- [ ] clean up test code
+- [x] fix `BsDropDown` on _Cost region_
+- [x] clean up test code
 - [ ] update docs
+- [ ] add more example pages for the different components
+- [ ] page showing `BsGroup` and `BsValidatedGroup` examples
+- [ ] 
 
 ## Overview
 
