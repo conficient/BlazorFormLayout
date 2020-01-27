@@ -4,7 +4,11 @@
 
 <p>
     You can use the controls with validation. This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
-    <a href="https://www.nuget.org/packages/Blazored.FluentValidation/">Blazored.FluentValidation</a> from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>
+    <a href="https://www.nuget.org/packages/Blazored.FluentValidation/">Blazored.FluentValidation</a>
+    from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>.
+</p>
+<p>
+    The styles come from the standard Bootstrap 4.x validation classes.
 </p>
 
 <div class="row">
@@ -19,12 +23,12 @@
                     <BsText @bind-Value="@model.Contact" Label="Contact" />
                     <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
                     <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
-                    <BsNumber @bind-Value="@model.Price" Label="UnitPrice" step="0.01" /> @* the 'step' allows decimal values *@
-                    @*        <BsGroup Label="Select colour">
-                            <input type='color' @bind="model.FavouriteColour" />
-                        </BsGroup>
-                        <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business Type" />
-                        <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />*@
+                    <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
+                    <BsGroup Label="Select colour">
+                        <input type='color' @bind="model.FavouriteColour" />
+                    </BsGroup>
+                    <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business Type" />
+                    <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />
                     <BsStaticText Value="@model.Total.ToString("c")" />
                     <BsGroup Label="Current form context">
                         <p class="form-control-plaintext">Sample group with no validation</p>

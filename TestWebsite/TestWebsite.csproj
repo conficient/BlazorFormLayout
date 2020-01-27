@@ -22,6 +22,6 @@
 
   <PropertyGroup>
     <!-- see https://remibou.github.io/Make-your-Blazor-development-faster/ -->
-    <BlazorLinkOnBuild  Condition="'$(Configuration)'!='Release'">false</BlazorLinkOnBuild>
+    <BlazorLinkOnBuild Condition="'$(Configuration)'!='Release'">false</BlazorLinkOnBuild>
   </PropertyGroup>
 </Project>

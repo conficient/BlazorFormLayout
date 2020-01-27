@@ -54,7 +54,7 @@
                     <BsGroup Label="Current form context">
                         <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
                     </BsGroup>
-                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" />
+                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" MinDate="@minDeliveryDate" />
                     <BsDate @bind-Value="@model.OptionalDate" Label="Optional Date" />
                 </BsLayout>
             </EditForm>
@@ -65,13 +65,14 @@
             <EditForm Model="model">
                 <BsLayout Orientation="@formOrientation" >
                     <BsStaticText @bind-Value="@model.Name" Label="Customer name" />
-                    @*<BsStaticText Value="@model.Contact" Label="Contact" />
+                    <BsStaticText Value="@model.Contact" Label="Contact" />
                     <BsStaticText Value="@model.IsPriorityCustomer.ToString()" Label="Priority"  />
                     <BsStaticText Value="@model.Units.ToString()" Label="UnitsToOrder"  />
                     <BsStaticText Value="@model.Price.ToString()" Label="UnitPrice" />
                     <BsStaticText Value="@model.FavouriteColour?.ToString()" Label="Colour" />
                     <BsStaticText Value="@model.CustomerType.ToString()" Label="Business Type" />
-                    <BsStaticText Value="@model.Total.ToString("c")" />*@
+                    <BsStaticText Value="@model.DeliveryDate.ToShortDateString()" Label="Delivery Date" />
+                    <BsStaticText Value="@model.OptionalDate?.ToShortDateString()" Label="Optional Date" />
                     <BsGroup Label="Delivery Date">
                         @model.DeliveryDate.ToShortDateString()
                     </BsGroup>
@@ -108,7 +109,10 @@
 
     Customer model = new Customer();
 
-    
+    /// <summary>
+    /// Set min date as tomorrow
+    /// </summary>
+    private DateTime minDeliveryDate = DateTime.Today.AddDays(1);
 
     void ShowCurrent()
     {

@@ -4,7 +4,8 @@
 @inherits BsControlBase<TValue>
 <BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
     <input type="date" @attributes="AdditionalAttributes" class="form-control @CssClass"
-           value="@CurrentValueAsString" @onchange="@CurrentValueChanged"
+           value="@CurrentValueAsString" @onchange="@CurrentValueChanged" 
+           min="@minDateValue" max="@maxDateValue"
            disabled="@(Mode == EditMode.ReadOnly)" />
 </BsValidatedGroup>
 @code
@@ -115,5 +116,36 @@
             result = default;
             return false;
         }
+    }
+
+    private string minDateValue => MinDate?.ToString(DateFormat) ?? GetAttribute("min");
+
+    private string maxDateValue => MaxDate?.ToString(DateFormat) ?? GetAttribute("max");
+
+    /// <summary>
+    /// Minimum date to allow in calendar
+    /// </summary>
+    [Parameter] public DateTime? MinDate { get; set; }
+
+    /// <summary>
+    /// Maximum date to allow in calendar
+    /// </summary>
+    [Parameter] public DateTime? MaxDate { get; set; }
+
+    /// <summary>
+    /// try to get attribute value
+    /// </summary>
+    /// <param name="attributeName"></param>
+    /// <returns></returns>
+    private string GetAttribute(string attributeName)
+    {
+        if(AdditionalAttributes != null && AdditionalAttributes.ContainsKey(attributeName))
+            if (AdditionalAttributes != null &&
+             AdditionalAttributes.TryGetValue(attributeName, out object result) &&
+             !string.IsNullOrEmpty(Convert.ToString(result)))
+            {
+                return Convert.ToString(result);
+            }
+        return null;
     }
 }
