@@ -20,6 +20,10 @@
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Get default Step attribute value for type
+    /// </summary>
+    /// <returns></returns>
     private string GetStepSize()
     {
         if (underlyingType == typeof(decimal)) return "0.01";
@@ -30,7 +34,7 @@
     {
         get
         {
-            // use step attribute if present
+            // use 'step' attribute if present
             if (AdditionalAttributes != null &&
                 AdditionalAttributes.TryGetValue("step", out object step) &&
                 !string.IsNullOrEmpty(Convert.ToString(step)))
