@@ -2,7 +2,7 @@
 @inherits BsControlBase<TEnum>
 <BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
     <select @bind="@CurrentValue" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
-        @foreach (var item in GetValueOptions())
+        @foreach (var item in selectOptions)
         {
             <option value="@item.Key">@item.Value</option>
         }
@@ -10,14 +10,18 @@
 </BsValidatedGroup>
 
 @code
-    {
-    /// <summary>
-    /// optional parameter: allow user to set values
-    /// </summary>
-    [Parameter]
-    public Dictionary<TEnum, string> ValueOptions { get; set; }
+{
 
-    Dictionary<TEnum, string> GetValueOptions() => ValueOptions ?? Helper.GetValueOptions<TEnum>();
+    /// <summary>
+    /// Set up
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        selectOptions = Helper.GetValueOptions<TEnum>();
+    }
+
+    private Dictionary<TEnum, string> selectOptions;
 
     protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
     {
