@@ -1,0 +1,127 @@
+﻿@page "/"
+
+<h1>BlazorFormLayout Test App</h1>
+
+<p>Use the controls below to change how the form is rendered</p>
+
+<div class="row">
+    <div class="col-sm-2">Orientation:</div>
+    <div class="col-sm-10">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <button class=@verticalButton @onclick="(() => SetOrientation(Orientation.Vertical))">Vertical</button>
+            </li>
+            <li class="list-inline-item">
+                <button class=@horizontalButton @onclick="(() => SetOrientation(Orientation.Horizontal))">Horizontal</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">Mode:</div>
+    <div class="col-sm-10">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <button class=@editBtn @onclick="(() => SetMode(EditMode.Editing))">Editing</button>
+            </li>
+            <li class="list-inline-item">
+                <button class=@readBtn @onclick="(() => SetMode(EditMode.ReadOnly))">Read-only</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <BsCard Header="Test Form" HeaderCss="bg-info">
+
+            <EditForm Model="model">
+                <BsLayout Orientation="@formOrientation" EditMode="FormMode">
+                    <BsText Label="Customer name"
+                            class="input-group-sm"
+                            @bind-Value="@model.Name"
+                            maxlength="20" 
+                            placeholder="enter name" 
+                            />
+                    <BsText @bind-Value="@model.Contact" Label="Contact" />
+                    <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
+                    <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
+                    <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
+                    <BsGroup Label="Select colour">
+                        <input type='color' @bind="model.FavouriteColour" />
+                    </BsGroup>
+                    <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business Type" />
+                    <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />
+                    <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" Inline="false" />
+                    <BsDropdown @bind-Value="@model.CostRegion" Label="Cost region" ValueOptions="@model.GetCostRegions()" />
+                    <BsStaticText Value="@model.Total.ToString("c")" />
+                    <BsGroup Label="Current form context">
+                        <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
+                    </BsGroup>
+                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" MinDate="@minDeliveryDate" />
+                    <BsDate @bind-Value="@model.OptionalDate" Label="Optional Date" />
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <BsCard Header="Customer" HeaderCss="bg-info">
+            <EditForm Model="model">
+                <BsLayout Orientation="@formOrientation" >
+                    <BsStaticText @bind-Value="@model.Name" Label="Customer name" />
+                    <BsStaticText Value="@model.Contact" Label="Contact" />
+                    <BsStaticText Value="@model.IsPriorityCustomer.ToString()" Label="Priority"  />
+                    <BsStaticText Value="@model.Units.ToString()" Label="UnitsToOrder"  />
+                    <BsStaticText Value="@model.Price.ToString()" Label="UnitPrice" />
+                    <BsStaticText Value="@model.FavouriteColour?.ToString()" Label="Colour" />
+                    <BsStaticText Value="@model.CustomerType.ToString()" Label="Business Type" />
+                    <BsStaticText Value="@model.DeliveryDate.ToShortDateString()" Label="Delivery Date" />
+                    <BsStaticText Value="@model.OptionalDate?.ToShortDateString()" Label="Optional Date" />
+                    <BsGroup Label="Delivery Date">
+                        @model.DeliveryDate.ToShortDateString()
+                    </BsGroup>
+                    <BsGroup Label="Optional Date">
+                        @model.OptionalDate?.ToShortDateString()
+                    </BsGroup>
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+</div>
+<button @onclick="ShowCurrent">Show</button>
+<pre>
+@json
+</pre>
+@code
+{
+    EditMode FormMode = EditMode.Editing;
+
+    Orientation formOrientation = Orientation.Horizontal;
+
+
+    string horizontalButton => "btn " + (formOrientation == Orientation.Horizontal ? "btn-primary" : "btn-default");
+
+    string verticalButton => "btn " + (formOrientation == Orientation.Vertical ? "btn-primary" : "btn-default");
+
+    void SetOrientation(Orientation orientation) => formOrientation = orientation;
+
+    void SetMode(EditMode mode) => FormMode = mode;
+
+    string editBtn => "btn " + (FormMode == EditMode.Editing ? "btn-primary" : "btn-light");
+
+    string readBtn => "btn " + (FormMode == EditMode.ReadOnly ? "btn-primary" : "btn-light");
+
+    Customer model = new Customer();
+
+    /// <summary>
+    /// Set min date as tomorrow
+    /// </summary>
+    private DateTime minDeliveryDate = DateTime.Today.AddDays(1);
+
+    void ShowCurrent()
+    {
+        json = System.Text.Json.JsonSerializer.Serialize(model);
+    }
+
+    string json = "not loaded";
+}

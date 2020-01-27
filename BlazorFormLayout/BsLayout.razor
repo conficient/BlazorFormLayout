@@ -1,0 +1,13 @@
+﻿<CascadingValue Value="Orientation">
+    <CascadingValue Value="EditMode">
+        @ChildContent
+    </CascadingValue>
+</CascadingValue>
+@code
+{
+    [Parameter] public Orientation Orientation { get; set; } = Orientation.Vertical;
+
+    [Parameter] public EditMode EditMode { get; set; } = EditMode.Editing;
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

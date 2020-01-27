@@ -1,0 +1,32 @@
+﻿@using System.Linq.Expressions
+@typeparam TType
+<BsGroup Label="@Label" Id="@Id">
+    @ChildContent
+    @if (ValueExpression != null)
+    {
+        <ValidationMessage For="@ValueExpression" />
+    }
+</BsGroup>
+@code
+{
+    /// <summary>
+    /// Inner content
+    /// </summary>
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// Validation param if present
+    /// </summary>
+    [Parameter] public Expression<Func<TType>> ValueExpression { get; set; }
+
+    /// <summary>
+    /// Form field label - passed to BsGroup
+    /// </summary>
+    [Parameter] public string Label { get; set; }
+
+    /// <summary>
+    /// Field Id if any - passed to BsGroup
+    /// </summary>
+    [Parameter] public string Id { get; set; }
+
+}

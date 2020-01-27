@@ -1,0 +1,57 @@
+﻿@page "/Validation"
+
+<h1>BlazorFormLayout Shows Validation</h1>
+
+<p>
+    You can use the controls with validation. This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
+    <a href="https://www.nuget.org/packages/Blazored.FluentValidation/">Blazored.FluentValidation</a>
+    from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>.
+</p>
+<p>
+    The styles come from the standard Bootstrap 4.x validation classes.
+</p>
+
+<div class="row">
+    <div class="col">
+        <BsCard Header="Validation Demo" HeaderCss="bg-info">
+
+            <EditForm Model="model" OnValidSubmit="HandleSubmit">
+                <FluentValidationValidator Validator="validator" />
+                <ValidationSummary />
+                <BsLayout>
+                    <BsText Label="Customer name" @bind-Value="@model.Name" />
+                    <BsText @bind-Value="@model.Contact" Label="Contact" />
+                    <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
+                    <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
+                    <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
+                    <BsGroup Label="Select colour">
+                        <input type='color' @bind="model.FavouriteColour" />
+                    </BsGroup>
+                    <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business Type" />
+                    <BsRadioEnum @bind-Value="@model.CustomerType" Label="Business Type" />
+                    <BsStaticText Value="@model.Total.ToString("c")" />
+                    <BsGroup Label="Current form context">
+                        <p class="form-control-plaintext">Sample group with no validation</p>
+                    </BsGroup>
+                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery Date" />
+                    <BsDate @bind-Value="@model.OptionalDate" Label="Optional Date" />
+                    <BsCheckbox @bind-Value="@model.AcceptTerms" CheckboxLabel="I agree to give you an arm and a leg" Label="Accept terms" />
+                    <BsGroup>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </BsGroup>
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+</div>
+@code
+{
+    Customer model = new Customer();
+
+    CustomerValidator validator = new CustomerValidator();
+
+    void HandleSubmit()
+    {
+
+    }
+}

@@ -1,0 +1,37 @@
+﻿@* Creates a Bootstrap v4 control group with label *@
+<div class="@formclass">
+    <label for="@Id" class="@labelclass">@Label</label>
+    <div class="@divclass">
+        @ChildContent
+    </div>
+</div>
+@code
+{
+    /// <summary>
+    /// Form field label
+    /// </summary>
+    [Parameter] public string Label { get; set; }
+
+    /// <summary>
+    /// Field Id if any
+    /// </summary>
+    [Parameter] public string Id { get; set; }
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// Cascading layout source
+    /// </summary>
+    [CascadingParameter] public Orientation Orientation { get; set; }
+
+    /// <summary>
+    /// Form orientation
+    /// </summary>
+    private bool IsVertical => (Orientation == Orientation.Vertical);
+
+    private string formclass => IsVertical ? "form-group" : "form-group row";
+
+    private string labelclass => IsVertical ? "" : "col-sm-4 col-md-3 col-form-label";
+
+    private string divclass => IsVertical ? "" : "col-sm-8 col-md-9";
+}

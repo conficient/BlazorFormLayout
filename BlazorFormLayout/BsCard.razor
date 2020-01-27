@@ -1,0 +1,21 @@
+﻿<div class="card @CardCss">
+    @if(!string.IsNullOrEmpty(Header))
+    {
+    <div class="card-header @HeaderCss">
+        <h3>@Header</h3>
+    </div>
+    }
+    <div class="card-body">
+        @ChildContent
+    </div>
+</div>
+@code
+{
+    [Parameter] public string CardCss {get;set;}
+
+    [Parameter] public string Header {get;set;}
+
+    [Parameter] public string HeaderCss {get;set;}
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

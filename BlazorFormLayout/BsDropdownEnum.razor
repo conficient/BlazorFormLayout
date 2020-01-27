@@ -1,0 +1,30 @@
+﻿@typeparam TEnum
+@inherits BsControlBase<TEnum>
+<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+    <select @bind="@CurrentValue" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
+        @foreach (var item in selectOptions)
+        {
+            <option value="@item.Key">@item.Value</option>
+        }
+    </select>
+</BsValidatedGroup>
+
+@code
+{
+
+    /// <summary>
+    /// Set up
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        selectOptions = Helper.GetValueOptions<TEnum>();
+    }
+
+    private Dictionary<TEnum, string> selectOptions;
+
+    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+}

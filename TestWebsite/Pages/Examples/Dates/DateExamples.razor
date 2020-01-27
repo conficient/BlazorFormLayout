@@ -1,0 +1,45 @@
+﻿@page "/Examples/Date"
+@namespace TestWebsite.Pages.Examples.Dates
+
+<h1>BsDate Examples</h1>
+
+<p>
+    The <code>BsDate</code> control can be bound to either a <code>DateTime</code>, <code>DateTimeOffset</code> or
+    a nullable value of either of these. Unlike the standard Blazor <code>&lt;InputDate&gt;</code> control, if a date
+    property isn't set (it has the default value) it won't populate the control with '01-01-0001' but leave it blank.
+</p>
+<p>
+    Standard usage:
+    <code>&lt;BsDate @@bind-Value="@@{property}" Label="{label}" /&gt;</code>
+</p>
+
+<div class="row">
+    <div class="col">
+        <BsCard Header="Dates Demo" HeaderCss="bg-info">
+
+            <EditForm Model="model" OnValidSubmit="HandleSubmit">
+                <FluentValidationValidator Validator="validator" />
+                <ValidationSummary />
+                <BsLayout>
+                    <BsDate @bind-Value="@model.Date1" Label="Date1" />
+                    <BsDate @bind-Value="@model.Date2" Label="Date2 (nullable)" />
+                    <BsDate @bind-Value="@model.Date3" Label="Date3" />
+                    <BsGroup>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </BsGroup>
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+</div>
+@code
+{
+    DateExample model = new DateExample();
+
+    DateExampleValidator validator = new DateExampleValidator();
+
+    void HandleSubmit()
+    {
+
+    }
+}

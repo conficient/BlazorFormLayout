@@ -1,0 +1,20 @@
+﻿@inherits BsControlBase<bool>;
+<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+    <div class="form-check">
+        <input type="checkbox" id="@Id"  class="form-check-input" @bind="CurrentValue"
+               disabled="@(Mode == EditMode.ReadOnly)" />
+        <label class="form-check-label" for="@Id">@CheckboxLabel</label>
+    </div>
+</BsValidatedGroup>
+@code
+{
+    /// <summary>
+    /// The text which appears next to the checkbox itself (optional)
+    /// </summary>
+    [Parameter] public string CheckboxLabel { get; set; }
+
+    protected override bool TryParseValueFromString(string value, out bool result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException($"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
+    }
+}

@@ -1,0 +1,68 @@
+﻿@typeparam TEnum
+@inherits BsControlBase<TEnum>
+<BsValidatedGroup Label="@Label" Id="@Id" TType="TEnum" ValueExpression="@ValueExpression">
+    @foreach (var item in radioOptions)
+    {
+        var thisKey = item.Key;
+        bool isChecked = CurrentValue.Equals(thisKey);
+
+        <div class="form-check @InLineCss">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio"
+                       checked="@isChecked"
+                       disabled="@(Mode == EditMode.ReadOnly)"
+                       value="@thisKey"
+                       @onchange="@((ChangeEventArgs e) => CurrentValue = thisKey)" />
+                @item.Value
+            </label>
+        </div>
+    }
+</BsValidatedGroup>
+
+@code
+{
+    [Parameter] public string Name { get; set; }
+
+    /// <summary>
+    /// Should radio buttons be inline or on separate lines (default = inline)
+    /// </summary>
+    [Parameter] public bool Inline { get; set; } = true;
+
+    string InLineCss => Inline ? "form-check-inline" : string.Empty;
+
+    override protected void OnParametersSet()
+    {
+        base.OnParametersSet();
+        radioOptions = Helper.GetValueOptions<TEnum>();
+    }
+
+    private Dictionary<TEnum, string> radioOptions;
+
+    //private string controlName;
+
+    //Dictionary<TEnum, string> GetValueOptions() => Helper.GetValueOptions<TEnum>();
+
+    protected override bool TryParseValueFromString(string value, out TEnum result, out string validationErrorMessage)
+    {
+        // check type is enum
+        if (typeof(TEnum).IsEnum)
+        {
+            // attempt to parse value
+            var success = BindConverter.TryConvertTo<TEnum>(value, System.Globalization.CultureInfo.CurrentCulture, out var parsedValue);
+            if (success)
+            {
+                result = parsedValue;
+                validationErrorMessage = null;
+                return true;
+            }
+            else
+            {
+                result = default;
+                validationErrorMessage = $"The {FieldIdentifier.FieldName} field is not valid";
+                return false;
+            }
+        }
+        throw new InvalidOperationException($"{GetType()} does not support the type '{typeof(TEnum)}'.");
+    }
+
+}
