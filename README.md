@@ -56,4 +56,8 @@ Rendered example: [tbc]
 
 ## Getting Started
 
+See the [Getting Started](docs/GettingStarted.md) section of the documentation
+
 ## Documentation
+
+[Table of Contents](docs/Contents.md)
