@@ -31,10 +31,18 @@ namespace TestWebsite
         /// </summary>
         public bool AcceptTerms { get; set; }
 
+        public int CostRegion { get; set; }
 
-        public static string[] GetCustomerTypes()
+        public Dictionary<int, string> GetCostRegions()
         {
-            return Enum.GetNames(typeof(CustomerTypes));
+            return new Dictionary<int, string>()
+            {
+                { 100, "North" },
+                { 200, "South" },
+                { 300, "East" },
+                { 400, "West" }
+            };
         }
+
     }
 }

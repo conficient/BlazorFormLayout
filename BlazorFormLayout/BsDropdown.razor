@@ -1,17 +1,22 @@
-﻿@inherits BsControlBase<string>
+﻿@typeparam TType
+@inherits BsControlBase<TType>
 <BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
-    <InputSelect @bind-Value="@Value" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
+    <InputSelect @bind-Value="@CurrentValue" class="form-control" id="@Id" disabled="@(Mode == EditMode.ReadOnly)">
         @foreach (var item in ValueOptions)
         {
-            <option>@item</option>
+            <option value="@item.Key">@item.Value</option>
         }
     </InputSelect>
 </BsValidatedGroup>
 @code
 {
-    [Parameter] public IEnumerable<string> ValueOptions { get; set; }
+    /// <summary>
+    /// The value options to set 
+    /// </summary>
+    [Parameter]
+    public Dictionary<TType, string> ValueOptions { get; set; }
 
-    protected override bool TryParseValueFromString(string value, out string result, out string validationErrorMessage)
+    protected override bool TryParseValueFromString(string value, out TType result, out string validationErrorMessage)
     {
         throw new NotImplementedException();
     }
