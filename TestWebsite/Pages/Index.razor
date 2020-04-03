@@ -48,7 +48,7 @@
                     <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
                     <BsStaticText Value="@model.Total.ToString("c")" />
                     <BsGroup Label="Select colour">
-                        <input type='color' @bind="model.FavouriteColour" />
+                        <input type='color' @bind="model.FavouriteColour" disabled="@isDisabled" />
                     </BsGroup>
                     <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business type" />
                     <BsRadioEnum @bind-Value="@model.DeliveryOption" Label="Delivery option" Inline="false" />
@@ -111,6 +111,9 @@
     string editBtn => "btn " + (FormMode == EditMode.Editing ? "btn-primary" : "btn-light");
 
     string readBtn => "btn " + (FormMode == EditMode.ReadOnly ? "btn-primary" : "btn-light");
+
+    // for setting the color picker state
+    bool isDisabled => FormMode == EditMode.ReadOnly;
 
     // model
 
