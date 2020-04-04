@@ -15,8 +15,11 @@ namespace BlazorFormLayout
     public abstract class InputBase<TValue> : ComponentBase, IDisposable
     {
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
+        
         private bool _previousParsingAttemptFailed;
+        
         private ValidationMessageStore _parsingValidationMessages;
+      
         private Type _nullableUnderlyingType;
 
         [CascadingParameter] EditContext CascadedEditContext { get; set; }

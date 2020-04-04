@@ -1,14 +1,15 @@
-﻿@page "/Validation"
+﻿@page "/examples/validation"
 
 <h1>BlazorFormLayout Shows Validation</h1>
 
 <p>
-    You can use the controls with validation. This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
+    You can use the controls with validation using the[`EditForm` functionality](https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1#validation-support).
+    This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
     <a href="https://www.nuget.org/packages/Blazored.FluentValidation/">Blazored.FluentValidation</a>
     from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>.
 </p>
 <p>
-    The styles come from the standard Bootstrap 4.x validation classes.
+    The validation styles in this example are contained in the `site.css` file: `valid`, `invalid` and `validation-message`.
 </p>
 
 <div class="row">
@@ -39,6 +40,12 @@
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>
+                    @if(result !=null)
+                    {
+                        <BsGroup>
+                            @result
+                        </BsGroup>
+                    }
                 </BsLayout>
             </EditForm>
         </BsCard>
@@ -52,6 +59,8 @@
 
     void HandleSubmit()
     {
-
+        result = "The form was accepted";
     }
+
+    string result;
 }

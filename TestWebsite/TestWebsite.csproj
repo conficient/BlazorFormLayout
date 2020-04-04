@@ -19,10 +19,6 @@
   <ItemGroup>
     <Watch Include="..\BlazorFormLayout\**\*.razor" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Pages\Examples\Number\" />
-  </ItemGroup>
 
   <PropertyGroup>
     <!-- see https://remibou.github.io/Make-your-Blazor-development-faster/ -->

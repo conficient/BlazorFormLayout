@@ -1,16 +1,23 @@
-﻿@page "/Examples/Date"
+﻿@page "/examples/date"
 @namespace TestWebsite.Pages.Examples.Dates
 
 <h1>BsDate Examples</h1>
 
 <p>
-    The <code>BsDate</code> control can be bound to either a <code>DateTime</code>, <code>DateTimeOffset</code> or
-    a nullable value of either of these. Unlike the standard Blazor <code>&lt;InputDate&gt;</code> control, if a date
+    The <code>BsDate</code> control can be bound to either a <code>DateTime</code>, <code>DateTimeOffset</code>, or
+    a [nullable](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types)
+    value of either of these.
+</p>
+<p>
+    Unlike the standard Blazor <code>&lt;InputDate&gt;</code> control, if a date
     property isn't set (it has the default value) it won't populate the control with '01-01-0001' but leave it blank.
 </p>
 <p>
     Standard usage:
     <code>&lt;BsDate @@bind-Value="@@{property}" Label="{label}" /&gt;</code>
+</p>
+<p>
+    The BsDate also supports the Parameters <code>MinDate</code> and <code>MaxDate</code>, for setting date ranges on browser calendars.
 </p>
 
 <div class="row">
@@ -25,7 +32,7 @@
                     <BsDate @bind-Value="@model.Date2" Label="Date2 (nullable)" />
                     <BsGroup>
                         The next date sets the <code>MinDate</code> and <code>MaxDate</code> parameters. These set the
-                        <code>min</code> and <code>max</code> values of the <code>&lt;input</code> control, which 
+                        <code>min</code> and <code>max</code> values of the <code>&lt;input&gt;</code> control, which
                         limit the dates shown on any browser calendar. You should still perform server-side validation though
                         as any browser tools can edit the control and remove these attributes!
                     </BsGroup>
@@ -33,6 +40,13 @@
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>
+                    @if (result != null)
+                    {
+                        <BsGroup>
+                            @* show result when submit is valid *@
+                            @result
+                        </BsGroup>
+                    }
                 </BsLayout>
             </EditForm>
         </BsCard>
@@ -46,6 +60,8 @@
 
     void HandleSubmit()
     {
-
+        result = $"Date1 is {model.Date1:d}, Date2 is {model.Date2:d} and Date3 is {model.Date3:d}";
     }
+
+    string result;
 }

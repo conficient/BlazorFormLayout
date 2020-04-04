@@ -12,7 +12,8 @@ Helper components for rendering form content in Blazor using Bootstrap v4
 - [ ] update docs
 - [ ] add more example pages for the different components
 - [ ] page showing `BsGroup` and `BsValidatedGroup` examples
-- [ ] 
+- [ ] add nuget package publishing to the build process
+- [ ] add to awesome-blazor list of packages
 
 ## Overview
 
