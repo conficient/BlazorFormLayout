@@ -11,3 +11,14 @@ Example
     </EditForm>
 ```
 
+### Orientation Parameter
+
+This parameter controls how the Bs components inside are rendered. Bootstrap 4 has two supported layouts. The
+default is Vertical, so form groups are rendered like this:
+```html
+example
+```
+The alternative is Horizontal, which renders like this:
+```html
+
+```

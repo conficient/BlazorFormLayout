@@ -1,11 +1,10 @@
 ﻿@page "/examples/date"
-@namespace TestWebsite.Pages.Examples.Dates
 
 <h1>BsDate Examples</h1>
 
 <p>
     The <code>BsDate</code> control can be bound to either a <code>DateTime</code>, <code>DateTimeOffset</code>, or
-    a [nullable](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types)
+    a <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types">nullable</a>
     value of either of these.
 </p>
 <p>
@@ -22,19 +21,28 @@
 
 <div class="row">
     <div class="col">
-        <BsCard Header="Dates Demo" HeaderCss="bg-info">
+        <BsCard Header="BsDate Demo" HeaderCss="bg-info">
 
             <EditForm Model="model" OnValidSubmit="HandleSubmit">
                 <FluentValidationValidator Validator="validator" />
                 <ValidationSummary />
                 <BsLayout Orientation="Orientation.Vertical">
+                    <BsGroup>
+                        Bound to a non-nullable <code>DateTime</code> property.
+                        <pre>&lt;BsDate @@bind-Value=&quot;@@model.Date1&quot; Label=&quot;Date1&quot; /&gt;</pre>
+                    </BsGroup>
                     <BsDate @bind-Value="@model.Date1" Label="Date1" />
+                    <BsGroup>
+                        Bound to a nullable <code>DateTime</code> property.
+                        <pre>&lt;BsDate @@bind-Value=&quot;@@model.Date2&quot; Label=&quot;Date2 (nullable)&quot; /&gt;</pre>
+                    </BsGroup>
                     <BsDate @bind-Value="@model.Date2" Label="Date2 (nullable)" />
                     <BsGroup>
                         The next date sets the <code>MinDate</code> and <code>MaxDate</code> parameters. These set the
                         <code>min</code> and <code>max</code> values of the <code>&lt;input&gt;</code> control, which
                         limit the dates shown on any browser calendar. You should still perform server-side validation though
                         as any browser tools can edit the control and remove these attributes!
+                        <pre>&lt;BsDate @@bind-Value=&quot;@@model.Date3&quot; Label=&quot;Date3&quot; MinDate=&quot;@@DateTime.Today&quot; MaxDate=&quot;@@DateTime.Today.AddMonths(1)&quot; /&gt;</pre>
                     </BsGroup>
                     <BsDate @bind-Value="@model.Date3" Label="Date3" MinDate="@DateTime.Today" MaxDate="@DateTime.Today.AddMonths(1)" />
                     <BsGroup>

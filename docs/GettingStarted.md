@@ -61,3 +61,19 @@ enable editing at a later point, e.g. if the user clicks an `Edit` button.
 The `BsText` component binds to a string property or value. All `Bs` controls use the 
 `@bind-Value` syntax to bind to a property in the model. The `Label` parameter
 sets the text shown in the label.
+
+#### Setting input attributes
+
+As with standard Blazor `Input..` controls, the `Bs..` components support the 
+[additional attributes feature](https://docs.microsoft.com/en-us/aspnet/core/blazor/components?view=aspnetcore-3.1#attribute-splatting-and-arbitrary-parameters).
+
+For example, you can specify the attribute on the `BsText` component in this way:
+```html
+  <BsText Label="Customer name"
+          class="input-group-sm"
+          @bind-Value="@model.Name"
+          maxlength="20"
+          placeholder="enter name" />
+```
+Note that the `class` attribute also has additional Bootstrap class `form-control` added 
+to it by the `BsText` component.

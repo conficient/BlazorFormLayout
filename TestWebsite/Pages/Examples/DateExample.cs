@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestWebsite.Pages.Examples.Dates
+namespace TestWebsite.Pages.Examples
 {
     public class DateExample
     {

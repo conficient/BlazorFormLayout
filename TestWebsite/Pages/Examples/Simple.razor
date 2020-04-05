@@ -2,22 +2,44 @@
 
 <h1>BlazorFormLayout Simplest Example</h1>
 
+<p>This example shows the simplest possible form, and also demonstrates the different layouts and editing modes.</p>
+<p>Note that all the forms share the same underlying model, so a change to any control is reflected in the others.</p>
 <div class="row">
-    <div class="col-xs-12 col-sm-6">
-        <h3>Editable Horizontal</h3>
-        <EditForm Model="example" >
-            <BsLayout Orientation="Orientation.Horizontal" EditMode="EditMode.Editing">
-                <BsText @bind-Value="@example.Name" Label="Your name" />
-            </BsLayout>
-        </EditForm>
+    <div class="col-md-12 col-lg-6">
+        <BsCard Header="Editable Horizontal" HeaderCss="bg-info">
+            <EditForm Model="example">
+                <BsLayout Orientation="Orientation.Horizontal" EditMode="EditMode.Editing">
+                    <BsText @bind-Value="@example.Name" Label="Your name" />
+                </BsLayout>
+            </EditForm>
+        </BsCard>
     </div>
-    <div class="col-xs-12 col-sm-6">
-        <h3>Read-Only Vertical</h3>
-        <EditForm Model="example">
-            <BsLayout Orientation="Orientation.Vertical" EditMode="EditMode.ReadOnly">
-                <BsText @bind-Value="@example.Name" Label="Your name" />
-            </BsLayout>
-        </EditForm>
+    <div class="col-md-12 col-lg-6">
+        <BsCard Header="Editable Vertical" HeaderCss="bg-primary">
+            <EditForm Model="example">
+                <BsLayout Orientation="Orientation.Vertical" EditMode="EditMode.Editing">
+                    <BsText @bind-Value="@example.Name" Label="Your name" />
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+    <div class="col-md-12 col-lg-6">
+        <BsCard Header="Read-Only Horizontal" HeaderCss="bg-info">
+            <EditForm Model="example">
+                <BsLayout Orientation="Orientation.Horizontal" EditMode="EditMode.ReadOnly">
+                    <BsText @bind-Value="@example.Name" Label="Your name" />
+                </BsLayout>
+            </EditForm>
+        </BsCard>
+    </div>
+    <div class="col-md-12 col-lg-6">
+        <BsCard Header="Read-Only Vertical" HeaderCss="bg-primary">
+            <EditForm Model="example">
+                <BsLayout Orientation="Orientation.Vertical" EditMode="EditMode.ReadOnly">
+                    <BsText @bind-Value="@example.Name" Label="Your name" />
+                </BsLayout>
+            </EditForm>
+        </BsCard>
     </div>
 </div>
 @code

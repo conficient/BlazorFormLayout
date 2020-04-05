@@ -1,0 +1,51 @@
+﻿
+@page "/examples/bsgroup"
+
+<h1>BsGroup Examples</h1>
+
+<p>This container component is used to render a bootstrap form field group for your own controls or content.</p>
+
+<BsCard Header="BsGroup Demo" HeaderCss="bg-info">
+
+    <EditForm Model="model">
+        <BsLayout Orientation="Orientation.Horizontal">
+
+            <BsGroup>
+                <h4>A heading</h4>
+                <p>This group has no label set</p>
+            </BsGroup>
+            <BsGroup Label="Example">
+                <p>This <code>BsGroup</code> component just has static text inside it.</p>
+            </BsGroup>
+            <BsGroup Label="Enter your name" Id="NameTitle">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <InputText @bind-Value="model.Title" placeholder="title" id="NameTitle" />
+                    </li>
+                    <li class="list-inline-item">
+                        <InputText @bind-Value="model.FirstName" placeholder="first name" />
+                    </li>
+                    <li class="list-inline-item">
+                        <InputText @bind-Value="model.Surname" placeholder="last name" />
+                    </li>
+                </ul>
+            </BsGroup>
+        </BsLayout>
+    </EditForm>
+</BsCard>
+
+    @code
+{
+        GroupExample model = new GroupExample();
+
+
+        class GroupExample
+        {
+            public string Title { get; set; }
+
+            public string FirstName { get; set; }
+
+            public string Surname { get; set; }
+        }
+
+    }

@@ -2,7 +2,7 @@
 
 <h1>BlazorFormLayout Test App</h1>
 
-<p>Use the controls below to change how the form is rendered</p>
+<p>An example of all the controls. Use the buttons below to change how the form is rendered</p>
 
 <div class="row">
     <div class="col-sm-2">Orientation:</div>
@@ -31,67 +31,36 @@
         </ul>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-12 col-sm-6">
-        <BsCard Header="Test Form" HeaderCss="bg-info">
-            <p>This is the editable form</p>
-            <EditForm Model="model">
-                <BsLayout Orientation="@formOrientation" EditMode="FormMode">
-                    <BsText Label="Customer name"
-                            class="input-group-sm"
-                            @bind-Value="@model.Name"
-                            maxlength="20"
-                            placeholder="enter name" />
-                    <BsText @bind-Value="@model.Contact" Label="Contact" />
-                    <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
-                    <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
-                    <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
-                    <BsStaticText Value="@model.Total.ToString("c")" />
-                    <BsGroup Label="Select colour">
-                        <input type='color' @bind="model.FavouriteColour" disabled="@isDisabled" />
-                    </BsGroup>
-                    <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business type" />
-                    <BsRadioEnum @bind-Value="@model.DeliveryOption" Label="Delivery option" Inline="false" />
-                    <BsStaticText Value="@model.DeliveryCost.ToString("c")" Label="Delivery cost" />
-                    <BsDropdown @bind-Value="@model.CostRegion" Label="Cost region" ValueOptions="@model.GetCostRegions()" />
-                    <BsGroup Label="Current form context">
-                        <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
-                    </BsGroup>
-                    <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery date" MinDate="@minDeliveryDate" />
-                    <BsDate @bind-Value="@model.OptionalDate" Label="Optional date" />
-                </BsLayout>
-            </EditForm>
-        </BsCard>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-        <BsCard Header="Customer" HeaderCss="bg-info">
-            <p>This form is all static text fields</p>
-            <EditForm Model="model">
-                <BsLayout Orientation="@formOrientation">
-                    <BsStaticText Value="@model.Name" Label="Customer name" />
-                    <BsStaticText Value="@model.Contact" Label="Contact" />
-                    <BsStaticText Value="@model.IsPriorityCustomer" Label="Priority" />
-                    <BsStaticText Value="@model.Units" Label="Units" />
-                    <BsStaticText Value="@model.Price.ToString("c")" Label="Unit price" />
-                    <BsStaticText Value="@model.Total.ToString("c")" />
-                    <BsStaticText Value="@model.FavouriteColour" Label="Colour" />
-                    <BsStaticText Value="@model.CustomerType" Label="Business type" />
-                    <BsStaticText Value="@model.DeliveryOption" Label="Delivery option" />
-                    <BsStaticText Value="@model.DeliveryCost.ToString("c")" Label="Delivery cost" />
-                    <BsStaticText Value="@model.CostRegion" Label="Cost region" />
-                    <BsStaticText Value="@model.DeliveryDate.ToShortDateString()" Label="Delivery date" />
-                    <BsStaticText Value="@model.OptionalDate?.ToShortDateString()" Label="Optional date" />
-                    <BsGroup Label="Delivery Date">
-                        @model.DeliveryDate.ToShortDateString()
-                    </BsGroup>
-                    <BsGroup Label="Optional Date">
-                        @model.OptionalDate?.ToShortDateString()
-                    </BsGroup>
-                </BsLayout>
-            </EditForm>
-        </BsCard>
-    </div>
-</div>
+<BsCard Header="Customer" HeaderCss="bg-info">
+    <p>This is the editable form</p>
+    <EditForm Model="model">
+        <BsLayout Orientation="@formOrientation" EditMode="FormMode">
+            <BsText Label="Customer name"
+                    class="input-group-sm"
+                    @bind-Value="@model.Name"
+                    maxlength="20"
+                    placeholder="enter name" />
+            <BsText @bind-Value="@model.Contact" Label="Contact" />
+            <BsCheckbox @bind-Value="@model.IsPriorityCustomer" Label="Priority" CheckboxLabel="Yes" />
+            <BsNumber @bind-Value="@model.Units" Label="UnitsToOrder" />
+            <BsNumber @bind-Value="@model.Price" Label="UnitPrice" />
+            <BsStaticText Value="@model.Total.ToString("c")" Label="Total" />
+            <BsGroup Label="Select colour">
+                <input type='color' @bind="model.FavouriteColour" disabled="@isDisabled" />
+            </BsGroup>
+            <BsDropdownEnum @bind-Value="@model.CustomerType" Label="Business type" />
+            <BsRadioEnum @bind-Value="@model.DeliveryOption" Label="Delivery option" Inline="false" />
+            <BsStaticText Value="@model.DeliveryCost.ToString("c")" Label="Delivery cost" />
+            <BsDropdown @bind-Value="@model.CostRegion" Label="Cost region" ValueOptions="@model.GetCostRegions()" />
+            <BsGroup Label="Current form context">
+                <p class="form-control-plaintext">Sample group @formOrientation in @FormMode mode</p>
+            </BsGroup>
+            <BsDate @bind-Value="@model.DeliveryDate" Label="Delivery date" MinDate="@minDeliveryDate" />
+            <BsDate @bind-Value="@model.OptionalDate" Label="Optional date" />
+        </BsLayout>
+    </EditForm>
+</BsCard>
+
 @code
 {
     // form layout control

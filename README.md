@@ -17,9 +17,10 @@ Helper components for rendering form content in Blazor using Bootstrap v4
 
 ## Overview
 
-When creating forms in web apps, I find all the boiler-plate HTML required in Bootstrap 4 
-to be largely repetitive and tedious. With the Razor component model in Blazor we can 
-create components to hide away all that tedious nested HTML `div` tags and focus on the fields: 
+When creating forms in web applications using Bootstrap, I find all the boiler-plate HTML required to be 
+largely repetitive and tedious. With the Razor component model in Blazor we can create components to hide 
+away all that tedious nested HTML `div` tags and focus on the fields. The BlazorFormLayout library enables
+this.
 
 ### Example
 This code creates a Bootstrap form with several bound fields.
