@@ -10,8 +10,11 @@ namespace BlazorFormLayout
     /// <summary>
     /// A base class for form input components. This base class automatically
     /// integrates with an <see cref="Forms.EditContext"/>, which must be supplied
-    /// as a cascading parameter. Copied from https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputBase.cs
+    /// as a cascading parameter.
     /// </summary>
+    /// <remarks>
+    /// Copied from https://github.com/dotnet/aspnetcore/blob/master/src/Components/Web/src/Forms/InputBase.cs
+    /// </remarks>
     public abstract class InputBase<TValue> : ComponentBase, IDisposable
     {
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;

@@ -1,6 +1,6 @@
 ﻿@page "/Examples/Simple"
 
-<h1>BlazorFormLayout Simplest Example</h1>
+<h1>Simplest Example</h1>
 
 <p>
     This example shows the simplest possible form, and also demonstrates the
@@ -22,6 +22,15 @@
                     <BsText @bind-Value="@example.Name" Label="Your name" />
                 </BsLayout>
             </EditForm>
+            <CodeSample>
+&lt;BsCard Header=&quot;Editable Horizontal&quot; HeaderCss=&quot;bg-info&quot;&gt;
+    &lt;EditForm Model=&quot;example&quot;&gt;
+        &lt;BsLayout Orientation=&quot;Orientation.Horizontal&quot; EditMode=&quot;EditMode.Editing&quot;&gt;
+            &lt;BsText @@bind-Value=&quot;@@example.Name&quot; Label=&quot;Your name&quot; /&gt;
+        &lt;/BsLayout&gt;
+    &lt;/EditForm&gt;
+&lt;/BsCard&gt;
+            </CodeSample>
         </BsCard>
     </div>
     <div class="col-md-12 col-lg-6">

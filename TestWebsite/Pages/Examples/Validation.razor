@@ -1,15 +1,19 @@
 ﻿@page "/examples/validation"
 
-<h1>BlazorFormLayout Shows Validation</h1>
+<h1>Validation</h1>
 
 <p>
-    You can use the controls with validation using the[`EditForm` functionality](https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1#validation-support).
+    You can use the controls with validation using the
+    <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1#validation-support"><code>&lt;EditForm&gt;</code></a>
+    functionality.
+</p>
+<p>
     This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
     <a href="https://www.nuget.org/packages/Blazored.FluentValidation/">Blazored.FluentValidation</a>
     from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>.
 </p>
 <p>
-    The validation styles in this example are contained in the `site.css` file: `valid`, `invalid` and `validation-message`.
+    The validation styles in this example are contained in the <code>site.css</code> file: <b>valid</b>, <b>invalid</b> and <b>validation-message</b>.
 </p>
 
 <div class="row">
@@ -40,7 +44,7 @@
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>
-                    @if(result !=null)
+                    @if (result != null)
                     {
                         <BsGroup>
                             <span class="oi oi-check text-success" aria-hidden="true"></span>
