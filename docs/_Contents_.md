@@ -6,13 +6,20 @@
 
  - [BsLayout](BsLayout.md)
  - [BsGroup](BsGroup.md)
+ - [BsValidatedGroup](BsValidatedGroup.md)
 
 #### Input Controls
 
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
- - [BsXX](BsXX.md)
+All input controls have the following [Common Behaviours](CommonBehaviours.md)
+
+ - [BsCheckbox](BsCheckbox.md)
+ - [BsDate](BsDate.md)
+ - [BsDropdown](BsDropdown.md)
+ - [BsDropdownEnum](BsDropdownEnum.md)
+ - [BsNumber](BsNumber.md)
+ - [BsRadio](BsRadio.md)
+ - [BsRadioEnum](BsRadioEnum.md)
+ - [BsStaticText](BsStaticText.md)
+ - [BsText](BsText.md)
+ - [BsTextArea](BsTextArea.md)
+ 

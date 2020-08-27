@@ -1,9 +1,17 @@
 ﻿@* Creates a Bootstrap v4 control group with label *@
 <div class="@formclass">
     <label for="@Id" class="@labelclass">@Label</label>
-    <div class="@divclass">
+    @if(IsVertical)
+    {
+        @* vertical forms render input directly *@
         @ChildContent
-    </div>
+    } 
+    else
+    {
+        <div class="col-sm-8 col-md-9">
+            @ChildContent
+        </div>
+    }
 </div>
 @code
 {
@@ -13,7 +21,7 @@
     [Parameter] public string Label { get; set; }
 
     /// <summary>
-    /// Field Id if any
+    /// Field Id (optional)
     /// </summary>
     [Parameter] public string Id { get; set; }
 
@@ -33,5 +41,4 @@
 
     private string labelclass => IsVertical ? "" : "col-sm-4 col-md-3 col-form-label";
 
-    private string divclass => IsVertical ? "" : "col-sm-8 col-md-9";
 }
