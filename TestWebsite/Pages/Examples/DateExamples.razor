@@ -8,8 +8,9 @@
     value of either of these.
 </p>
 <p>
-    Unlike the standard Blazor <code>&lt;InputDate&gt;</code> control, if a date
-    property isn't set (it has the default value) it won't populate the control with `'01-01-0001'` but leave it blank.
+    Unlike the standard Blazor <code>&lt;InputDate&gt;</code> control, if a date property isn'
+    t set (it has the default value) it won't populate the control with `01-01-0001` but leave 
+    it blank.
 </p>
 <p>
     Standard usage:
@@ -40,7 +41,7 @@
                     <BsGroup>
                         The next date sets the <code>MinDate</code> and <code>MaxDate</code> parameters. These set the
                         <code>min</code> and <code>max</code> values of the <code>&lt;input&gt;</code> control, which
-                        limit the dates shown on any browser calendar. You should still perform server-side validation though
+                        limit the dates shown on any browser calendar. You should <b>still perform server-side validation</b> though
                         as any browser tools can edit the control and remove these attributes!
                         <pre>&lt;BsDate @@bind-Value=&quot;@@model.Date3&quot; Label=&quot;Date3&quot; MinDate=&quot;@@DateTime.Today&quot; MaxDate=&quot;@@DateTime.Today.AddMonths(1)&quot; /&gt;</pre>
                     </BsGroup>
