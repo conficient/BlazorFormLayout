@@ -1,9 +1,11 @@
 ﻿using ColorCode;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace TestWebsite.Shared
 {
@@ -27,6 +29,10 @@ namespace TestWebsite.Shared
 
         void Toggle() => Visible = !Visible;
 
+        /// <summary>
+        /// Convert the child content to highlighted HTML
+        /// </summary>
+        /// <returns></returns>
         MarkupString GetHtml()
         {
             string content = GetMarkup();
@@ -35,6 +41,10 @@ namespace TestWebsite.Shared
             return new MarkupString(html);
         }
 
+        /// <summary>
+        /// Determine language to use
+        /// </summary>
+        /// <returns></returns>
         private ILanguage GetLanguage()
         {
             switch (Language?.ToLower())
@@ -54,9 +64,13 @@ namespace TestWebsite.Shared
             }
         }
 
+        /// <summary>
+        /// Render ChildContent as a string
+        /// </summary>
+        /// <returns></returns>
         string GetMarkup()
         {
-            // create a rendertree bulder and write the ChildContent to it
+            // create a rendertree bulder and write the ChildContent using it
             var b = new RenderTreeBuilder();
             b.AddContent(0, ChildContent);
             var frames = b.GetFrames();
@@ -65,15 +79,16 @@ namespace TestWebsite.Shared
             {
                 var m = item.MarkupContent;
                 if (!string.IsNullOrEmpty(m))
-                    lines.Add(HtmlDecode(m));
+                    lines.AddRange(SplitLines(m));
             }
-
+            Console.WriteLine($"There are {lines.Count} lines");
             // Remove space before but keep indents
-            int spaces = lines.Select(l => SpacesBeforeContent(l)).Min();
+            int minSpaces = lines.Select(l => SpacesBeforeContent(l)).Min();
+            Console.Write($"Smallest space prefix is {minSpaces}");
             var sb = new System.Text.StringBuilder();
             foreach (var line in lines)
             {
-                sb.AppendLine(line.Substring(spaces));
+                sb.AppendLine(line.Substring(minSpaces));
             }
             return sb.ToString();
         }
@@ -88,9 +103,10 @@ namespace TestWebsite.Shared
             return result;
         }
 
-        private string HtmlDecode(string m)
+        private List<string> SplitLines(string text)
         {
-            return System.Net.WebUtility.HtmlDecode(m);
+            var l = Regex.Split(text, "\r\n|\r|\n");
+            return l.ToList();
         }
 
 
