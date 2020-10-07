@@ -1,5 +1,5 @@
 ﻿@inherits BsControlBase<string>
-<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@ValueExpression">
+<BsValidatedGroup Label="@Label" Id="@Id" ValueExpression="@Validate">
     <input @attributes="AdditionalAttributes" class="form-control @CssClass"
            @bind="@CurrentValue" disabled="@(Mode == EditMode.ReadOnly)"  />
 </BsValidatedGroup>

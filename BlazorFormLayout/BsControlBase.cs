@@ -22,6 +22,11 @@ namespace BlazorFormLayout
         [Parameter] public string Id { get; set; }
 
         /// <summary>
+        /// Validation property accessor - if set will enable validation
+        /// </summary>
+        [Parameter] public Expression<Func<TValue>> Validation { get; set; }
+
+        /// <summary>
         /// Edit mode (cascaded param from the BsLayout control)
         /// </summary>
         [CascadingParameter] public EditMode Mode { get; set; }

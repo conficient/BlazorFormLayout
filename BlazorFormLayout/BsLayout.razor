@@ -5,9 +5,18 @@
 </CascadingValue>
 @code
 {
+    /// <summary>
+    /// Controls form orientation
+    /// </summary>
     [Parameter] public Orientation Orientation { get; set; } = Orientation.Vertical;
 
+    /// <summary>
+    /// Controls form mode (edit/read-only)
+    /// </summary>
     [Parameter] public EditMode EditMode { get; set; } = EditMode.Editing;
 
+    /// <summary>
+    /// content that the cascading values apply to
+    /// </summary>
     [Parameter] public RenderFragment ChildContent { get; set; }
 }
