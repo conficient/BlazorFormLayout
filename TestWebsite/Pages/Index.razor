@@ -69,20 +69,22 @@
 
     Orientation formOrientation = Orientation.Horizontal;
 
-    string horizontalButton => "btn " + (formOrientation == Orientation.Horizontal ? "btn-primary" : "btn-default");
+    string horizontalButton => buttonCss(formOrientation == Orientation.Horizontal);
 
-    string verticalButton => "btn " + (formOrientation == Orientation.Vertical ? "btn-primary" : "btn-default");
+    string verticalButton => buttonCss(formOrientation == Orientation.Vertical);
 
     void SetOrientation(Orientation orientation) => formOrientation = orientation;
 
     void SetMode(EditMode mode) => FormMode = mode;
 
-    string editBtn => "btn " + (FormMode == EditMode.Editing ? "btn-primary" : "btn-light");
+    string editBtn => buttonCss(FormMode == EditMode.Editing);
 
-    string readBtn => "btn " + (FormMode == EditMode.ReadOnly ? "btn-primary" : "btn-light");
+    string readBtn => buttonCss(FormMode == EditMode.ReadOnly);
 
     // for setting the color picker state
     bool isDisabled => FormMode == EditMode.ReadOnly;
+
+    string buttonCss(bool value) => value ? "btn btn-primary" : "btn btn-outline-primary";
 
     // model
 
