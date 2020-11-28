@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace TestWebsite.Shared
 {
@@ -36,10 +38,45 @@ namespace TestWebsite.Shared
         MarkupString GetHtml()
         {
             string content = GetMarkup();
+            // HTML DECODE before encoding
+            var decoded = HttpUtility.HtmlDecode(content);
             var formatter = new HtmlFormatter();
-            var html = formatter.GetHtmlString(content, GetLanguage());
-            return new MarkupString(html);
+            var html = formatter.GetHtmlString(decoded, GetLanguage());
+            var clean = RemoveSpacing(html);
+            return new MarkupString(clean);
         }
+
+        private string RemoveSpacing(string html)
+        {
+            var lines = html.Split(Environment.NewLine);
+
+            var codeLines = from l in lines where IsCodeLine(l)
+                            select l;
+
+            var minSpaces = (from l in codeLines select SpacesBeforeContent(l)).Min();
+
+            if (minSpaces > 0)
+            {
+                var sb = new StringBuilder();
+                // remove spacing from code lines
+                foreach (var line in lines)
+                {
+                    if (IsCodeLine(line))
+                        sb.AppendLine(line.Substring(minSpaces));
+                    else
+                        sb.AppendLine(line);
+                }
+                return sb.ToString();
+            }
+
+            return html;
+        }
+
+        private bool IsCodeLine(string line)
+        {
+            return !(line.StartsWith("</pre") || line.EndsWith("<pre>") || string.IsNullOrWhiteSpace(line));
+        }
+
 
         /// <summary>
         /// Determine language to use
