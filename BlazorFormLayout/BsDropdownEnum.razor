@@ -17,8 +17,8 @@
     /// </summary>
     protected override void OnParametersSet()
     {
-        base.OnParametersSet();
         selectOptions = Helper.GetValueOptions<TEnum>();
+        base.OnParametersSet();
     }
 
     private Dictionary<TEnum, string> selectOptions;

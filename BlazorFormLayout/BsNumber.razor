@@ -3,14 +3,14 @@
 <BsValidatedGroup Label="@Label" Id="@Id" TType="TNumber" ValueExpression="@ValueExpression">
     <input type="number" @bind="@CurrentValue" id="@Id"
            @attributes="AdditionalAttributes" disabled="@(Mode == EditMode.ReadOnly)"
-           class="form-control @CssClass" step="@Step" />
+           class="form-control @CssClass" step="@step" />
 </BsValidatedGroup>
 @code
 {
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         underlyingType = Nullable.GetUnderlyingType(typeof(TNumber)) ?? typeof(TNumber);
-        base.OnInitialized();
+        base.OnParametersSet();
     }
 
     private Type underlyingType;
@@ -24,13 +24,15 @@
     /// Get default Step attribute value for type
     /// </summary>
     /// <returns></returns>
-    private string GetStepSize()
+    private string GetDefaultStepSize()
     {
-        if (underlyingType == typeof(decimal)) return "0.01";
         return null;
     }
 
-    protected string Step
+    /// <summary>
+    /// Determine step size: use 'step' attribute if present, otherwise use default
+    /// </summary>
+    protected string step
     {
         get
         {
@@ -42,7 +44,7 @@
                 return Convert.ToString(step);
             }
             // use default value based on type
-            return GetStepSize();
+            return GetDefaultStepSize();
         }
     }
 }

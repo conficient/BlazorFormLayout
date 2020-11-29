@@ -5,7 +5,7 @@
 <p>
     You can use the controls with validation using the
     <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1#validation-support"><code>&lt;EditForm&gt;</code></a>
-    functionality.
+    validation feature.
 </p>
 <p>
     This example uses <a href="https://www.nuget.org/packages/FluentValidation/">FluentValidation</a> and
@@ -13,7 +13,23 @@
     from <a href="https://chrissainty.com/using-fluentvalidation-for-forms-validation-in-razor-components/">Chris Sainty</a>.
 </p>
 <p>
+    To add validation to a form, add a validator component, e.g. <code>&lt;DataAnnotationsValidator /&gt;</code> or a <code>&lt;FluentValidationValidator .. /&gt;</code>
+</p>
+<p>
     The validation styles in this example are contained in the <code>site.css</code> file: <b>valid</b>, <b>invalid</b> and <b>validation-message</b>.
+    <CodeSample Language="css">
+        .valid.modified:not([type=checkbox]) {
+        outline: 1px solid #26b050;
+        }
+
+        .invalid {
+        outline: 1px solid red;
+        }
+
+        .validation-message {
+        color: red;
+        }
+    </CodeSample>
 </p>
 
 <div class="row">
