@@ -1,6 +1,8 @@
 # BlazorFormLayout
 Helper components for rendering form content in Blazor using Bootstrap v4
 
+![.NET Core build pack and push](https://github.com/conficient/BlazorFormLayout/workflows/.NET%20Core%20build%20pack%20and%20push/badge.svg)
+
 ## Todo
 
 - [x] check binding
