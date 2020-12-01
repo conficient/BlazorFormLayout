@@ -6,6 +6,7 @@
     <Authors>conficient</Authors>
     <Company>conficient</Company>
     <Description>A set of Bootstrap 4 controls to simplify markup for forms.</Description>
+    <Copyright>(c) 2020 Conficent</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
