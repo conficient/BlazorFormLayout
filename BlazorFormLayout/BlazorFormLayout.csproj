@@ -7,8 +7,10 @@
     <Company>conficient</Company>
     <Description>A set of Bootstrap 4 controls to simplify markup for forms.</Description>
     <Copyright>(c) 2020 Conficent</Copyright>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <ReleaseNotes>First version</ReleaseNotes>
+    <PackageProjectUrl>https://github.com/conficient/BlazorFormLayout</PackageProjectUrl>
+    <PackageReleaseNotes>Added project URL for package</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
