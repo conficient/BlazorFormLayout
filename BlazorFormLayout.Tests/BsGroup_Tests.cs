@@ -1,31 +1,44 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Testing;
+﻿using Bunit;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static Bunit.ComponentParameterFactory;
+using TestContext = Bunit.TestContext;
 
 namespace BlazorFormLayout.Tests
 {
     [TestClass]
     public class BsGroup_Tests
     {
-        private readonly TestHost host = new TestHost();
 
         [TestMethod]
-        public void EmptyGroupTest()
+        public void EmptyGroupWithLabel()
         {
-            var parameters = new ParameterBuilder()
-                .Add("Label", "a")
-                .ToParameterView();
+            using var ctx = new TestContext();
 
-            var component = host.AddComponent<BsGroup>(parameters);
+            var cut = ctx.RenderComponent<BsGroup>(
+                Parameter(nameof(BsGroup.Label), "a"));
 
-            // check form group
-            var html = component.Find("div").OuterHtml;
-            StringAssert.StartsWith(html, "<div class=\"form-group\">");
+            cut.MarkupMatches(
+                @"<div class=""form-group"">
+                     <label class>a</label>
+                  </div>");
         }
+
+        [TestMethod]
+        public void EmptyGroupWithLabel_Horizontal()
+        {
+            using var ctx = new TestContext();
+
+            var cut = ctx.RenderComponent<BsGroup>(
+                Parameter(nameof(BsGroup.Label), "a"),
+                CascadingValue(Orientation.Horizontal));
+
+            cut.MarkupMatches(
+@" <div class=""form-group row"">
+      <label class=""col-sm-4 col-md-3 col-form-label"">a</label>
+      <div class=""col-sm-8 col-md-9"">
+      </div>
+    </div>");
+        }
+
     }
 }

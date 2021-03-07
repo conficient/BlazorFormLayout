@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{6A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorFormLayout.Tests", "BlazorFormLayout.Tests\BlazorFormLayout.Tests.csproj", "{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.AspNetCore.Components.Testing", "Microsoft.AspNetCore.Components.Testing\Microsoft.AspNetCore.Components.Testing.csproj", "{9F96072D-D450-41CE-A17E-97369EB0A05F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docs", "docs\docs.csproj", "{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}"
 EndProject
 Global
@@ -38,10 +36,6 @@ Global
 		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EFDCFBD-ADEA-4331-A658-24893B0DEFF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F96072D-D450-41CE-A17E-97369EB0A05F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66AAD67D-2695-4CFC-BA5F-7762C4967AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,30 +1,31 @@
-﻿using Microsoft.AspNetCore.Components.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestContext = Bunit.TestContext;
+using static Bunit.ComponentParameterFactory;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Bunit;
 
 namespace BlazorFormLayout.Tests
 {
     [TestClass]
     public class BsCard_Tests
     {
-        private readonly TestHost host = new TestHost();
 
         [TestMethod]
         public void EmptyCard_Test()
         {
-            var parameters = new ParameterBuilder()
-                .Add("HeaderCss", "a")
-                .ToParameterView();
-                
-            var layout = host.AddComponent<BsCard>(parameters);
+            var ctx = new TestContext();
 
-            // header includes specified css
+            var cut = ctx.RenderComponent<BsCard>(
+                Parameter("HeaderCss", "a"));
 
-            // content is empty
-            Assert.IsTrue(string.IsNullOrWhiteSpace(layout.Find("div.card-body").InnerText));
+            cut.MarkupMatches(
+@"<div class=""card "">
+     <div class=""card-body"">
+     </div>
+  </div>");
         }
     }
 
