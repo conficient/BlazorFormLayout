@@ -10,19 +10,21 @@ Helper components for rendering form content in Blazor using Bootstrap v4
 - [x] fix date binding for unset dates
 - [x] create a group which has no validation?
 - [x] fix `BsDropDown` on _Cost region_
-- [x] clean up test code
+- [x] Switch to using [`bUnit`](https://bunit.egilhansen.com/) for testing
+- [ ] Add more test cases
 - [ ] update docs
 - [ ] add more example pages for the different components
 - [ ] page showing `BsGroup` and `BsValidatedGroup` examples
 - [ ] add nuget package publishing to the build process
-- [ ] add to awesome-blazor list of packages
+- [ ] add to [Awesome-Blazor](https://github.com/AdrienTorris/awesome-blazor) list of packages when sufficiently mature
 
 ## Overview
 
-When creating forms in web applications using Bootstrap, I find all the boiler-plate HTML required to be 
-largely repetitive and tedious. With the Razor component model in Blazor we can create components to hide 
-away all that tedious nested HTML `div` tags and focus on the fields. The BlazorFormLayout library enables
-this.
+When creating forms in web applications using Bootstrap, I find all the boiler-plate HTML required to be largely repetitive and tedious.
+
+With the Razor component model in Blazor we can create components to hide away all that tedious nested HTML `div` tags and focus on the fields.
+
+The BlazorFormLayout library enables this.
 
 ### Example
 This code creates a Bootstrap form with several bound fields.
