@@ -38,7 +38,6 @@
 
             <EditForm Model="model" OnValidSubmit="HandleSubmit">
                 <FluentValidationValidator Validator="validator" />
-                <ValidationSummary />
                 <BsLayout>
                     <BsText Label="Customer name" @bind-Value="@model.Name" />
                     <BsText @bind-Value="@model.Contact" Label="Contact" />
@@ -60,6 +59,8 @@
                     <BsGroup>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </BsGroup>
+                    <ValidationSummary />
+
                     @if (result != null)
                     {
                         <BsGroup>
