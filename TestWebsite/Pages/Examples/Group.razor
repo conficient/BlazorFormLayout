@@ -1,6 +1,4 @@
-﻿
-@page "/examples/bsgroup"
-
+﻿@page "/examples/bsgroup"
 <h1>BsGroup Examples</h1>
 
 <p>This container component is used to render a bootstrap form field group for your own controls or content.</p>
@@ -14,8 +12,8 @@
                 <p>This group has no label set</p>
                 <CodeSample Language="html">
                     &lt;BsGroup&gt;
-                        &lt;h4&gt;A heading&lt;/h4&gt;
-                        &lt;p&gt;This group has no label set&lt;/p&gt;
+                    &lt;h4&gt;A heading&lt;/h4&gt;
+                    &lt;p&gt;This group has no label set&lt;/p&gt;
                     &lt;/BsGroup&gt;
                 </CodeSample>
             </BsGroup>
@@ -23,35 +21,35 @@
                 <p>This <code>BsGroup</code> component has a label and static text inside it.</p>
                 <CodeSample Language="html">
                     &lt;BsGroup Label=&quot;Example&quot;&gt;
-                        &lt;p&gt;This &lt;code&gt;BsGroup&lt;/code&gt; component has a label and static text inside it.&lt;/p&gt;
+                    &lt;p&gt;This &lt;code&gt;BsGroup&lt;/code&gt; component has a label and static text inside it.&lt;/p&gt;
                     &lt;/BsGroup&gt;
                 </CodeSample>
             </BsGroup>
             <BsGroup Label="Enter your name" Id="NameTitle">
                 <ul class="list-inline">
                     <li class="list-inline-item">
-                        <InputText @bind-Value="model.Title" placeholder="title" id="NameTitle" />
+                        <InputText @bind-Value="model.Title" placeholder="title" id="NameTitle" class="form-control" style="width: 6em" />
                     </li>
                     <li class="list-inline-item">
-                        <InputText @bind-Value="model.FirstName" placeholder="first name" />
+                        <InputText @bind-Value="model.FirstName" placeholder="first name" class="form-control" />
                     </li>
                     <li class="list-inline-item">
-                        <InputText @bind-Value="model.Surname" placeholder="last name" />
+                        <InputText @bind-Value="model.Surname" placeholder="last name" class="form-control" />
                     </li>
                 </ul>
                 <CodeSample Language="html">
                     &lt;BsGroup Label=&quot;Enter your name&quot; Id=&quot;NameTitle&quot;&gt;
-                        &lt;ul class=&quot;list-inline&quot;&gt;
-                            &lt;li class=&quot;list-inline-item&quot;&gt;
-                                &lt;InputText @@bind-Value=&quot;model.Title&quot; placeholder=&quot;title&quot; id=&quot;NameTitle&quot; /&gt;
-                            &lt;/li&gt;
-                            &lt;li class=&quot;list-inline-item&quot;&gt;
-                                &lt;InputText @@bind-Value=&quot;model.FirstName&quot; placeholder=&quot;first name&quot; /&gt;
-                            &lt;/li&gt;
-                            &lt;li class=&quot;list-inline-item&quot;&gt;
-                                &lt;InputText @@bind-Value=&quot;model.Surname&quot; placeholder=&quot;last name&quot; /&gt;
-                            &lt;/li&gt;
-                        &lt;/ul&gt;
+                    &lt;ul class=&quot;list-inline&quot;&gt;
+                    &lt;li class=&quot;list-inline-item&quot;&gt;
+                    &lt;InputText @@bind-Value=&quot;model.Title&quot; placeholder=&quot;title&quot; id=&quot;NameTitle&quot; class=&quot;form-control&quot; style=&quot;width: 6em&quot; /&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;list-inline-item&quot;&gt;
+                    &lt;InputText @@bind-Value=&quot;model.FirstName&quot; placeholder=&quot;first name&quot; class=&quot;form-control&quot; /&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;list-inline-item&quot;&gt;
+                    &lt;InputText @@bind-Value=&quot;model.Surname&quot; placeholder=&quot;last name&quot; class=&quot;form-control&quot; /&gt;
+                    &lt;/li&gt;
+                    &lt;/ul&gt;
                     &lt;/BsGroup&gt;
                 </CodeSample>
             </BsGroup>
