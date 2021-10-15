@@ -1,1 +1,52 @@
-﻿<h1>TODO</h1>
+﻿@typeparam TNumber
+@inherits BsControlBase<TNumber>
+<BsValidatedGroup Label="@Label" Id="@Id" TType="TNumber" ValueExpression="@ValueExpression">
+    <input type="number" @bind="@CurrentValue" id="@Id"
+           @attributes="AdditionalAttributes" disabled="@(Mode == EditMode.ReadOnly)"
+           class="form-control @CssClass" step="@step" />
+</BsValidatedGroup>
+@code
+{
+    protected override void OnParametersSet()
+    {
+        underlyingType = Nullable.GetUnderlyingType(typeof(TNumber)) ?? typeof(TNumber);
+        base.OnParametersSet();
+    }
+
+    private Type underlyingType;
+
+    protected override bool TryParseValueFromString(string value, out TNumber result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Get default Step attribute value for type
+    /// </summary>
+    /// <returns></returns>
+    private string GetDefaultStepSize()
+    {
+        if (underlyingType == typeof(decimal) || underlyingType == typeof(double)) 
+            return "0.01";
+        return "1";
+    }
+
+    /// <summary>
+    /// Determine step size: use 'step' attribute if present, otherwise use default
+    /// </summary>
+    protected string step
+    {
+        get
+        {
+            // use 'step' attribute if present
+            if (AdditionalAttributes != null &&
+                AdditionalAttributes.TryGetValue("step", out object step) &&
+                !string.IsNullOrEmpty(Convert.ToString(step)))
+            {
+                return Convert.ToString(step);
+            }
+            // use default value based on type
+            return GetDefaultStepSize();
+        }
+    }
+}
